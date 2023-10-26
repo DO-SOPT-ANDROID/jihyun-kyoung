@@ -11,7 +11,9 @@ class HomeViewModel : ViewModel(){
             name = "경지현",
             musicTitle = "행복했던 날들 이었다",
             musicArtist = "데이식스",
-            type = "me"
+            type = "me",
+            MBTI = "INTJ",
+            id = "@jihyune_hi"
         ),
         Profile(
             profileImage = R.drawable.img_wolf,
