@@ -7,7 +7,17 @@ data class Profile(
     val name: String,
     val musicTitle: String,
     val musicArtist: String,
-    val type: String
+    val type: String,
+    val MBTI: String?,
+    val id: String?
 ){
     val music: String = "🎧$musicTitle - $musicArtist"
+    constructor(
+        @DrawableRes  profileImage: Int,
+         name: String,
+         musicTitle: String,
+         musicArtist: String,
+         type: String,
+    ) : this(profileImage, name, musicTitle, musicArtist, type, null, null)
+
 }

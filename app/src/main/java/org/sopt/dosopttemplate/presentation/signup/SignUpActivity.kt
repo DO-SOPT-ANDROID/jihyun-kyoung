@@ -1,8 +1,12 @@
-package org.sopt.dosopttemplate.presentation.signIn
+package org.sopt.dosopttemplate.presentation.signup
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.data.Profile
 import  org.sopt.dosopttemplate.databinding.ActivitySignupBinding
+import org.sopt.dosopttemplate.presentation.home.HomeViewModel
 import org.sopt.dosopttemplate.util.ToastMaker.makeToast
 
 class SingUpActivity : AppCompatActivity() {
@@ -19,9 +23,24 @@ class SingUpActivity : AppCompatActivity() {
             if (isConditionSatisfied()) {
                 makeToast(this, "회원가입 완료!")
                 sendDataToLoginActivity()
+                saveSignUpData()
             } else
                 makeToast(this, "입력값이 조건에 맞지 않습니다.")
         }
+    }
+
+    private fun saveSignUpData() {
+        var newProfile = Profile(
+            profileImage = R.drawable.img_monkey,
+            name = binding.etNickName.text.toString(),
+            musicTitle = "행복했던 날들 이었다",
+            musicArtist = "Day6",
+            type = "me",
+            MBTI = binding.etMbti.text.toString(),
+            id = binding.etId.text.toString(),
+        )
+        val viewModel by viewModels<HomeViewModel>()
+        viewModel.mockProfileList[0] = newProfile
     }
 
     private fun sendDataToLoginActivity() {

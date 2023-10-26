@@ -1,11 +1,11 @@
 package org.sopt.dosopttemplate.presentation.home
 
-import MyPageFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivityHomeBinding
+import org.sopt.dosopttemplate.presentation.MyPageFragment
 import org.sopt.dosopttemplate.presentation.doandroid.DOAndroidFragment
 
 class HomeActivity : AppCompatActivity() {
@@ -17,8 +17,15 @@ class HomeActivity : AppCompatActivity() {
         initializeHomeFragment()
         initializeBottomNavigation()
         clickBottomNavigation()
-    }
 
+    }
+//        private fun getDataFromLogin() {
+//
+//            intent.getStringExtra("id")
+//        binding.tvMbti.text = intent.getStringExtra("mbti")
+//        binding.tvNickName.text = intent.getStringExtra("nickName")
+//        binding.tvIntro.text = intent.getStringExtra("intro")
+//    }
     private fun initializeBinding() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)

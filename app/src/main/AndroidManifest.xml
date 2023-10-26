@@ -21,10 +21,10 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".presentation.signIn.SingUpActivity"
+            android:name=".presentation.signup.SingUpActivity"
             android:exported="false"></activity>
         <activity
-            android:name=".presentation.main.MainPageActivity"
+            android:name=".presentation.myPage.MainPageActivity"
             android:exported="false"></activity>
         <activity
             android:name=".presentation.home.HomeActivity"

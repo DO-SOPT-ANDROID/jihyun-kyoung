@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val profileAdapter = ProfileAdapter(requireContext())
         binding.rvProfiles.adapter = profileAdapter
-        profileAdapter.setProfileList(viewModel.mockFriendList)
+        profileAdapter.setProfileList(viewModel.mockProfileList)
     }
 
     override fun onDestroyView() {

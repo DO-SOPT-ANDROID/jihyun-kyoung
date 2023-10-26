@@ -5,7 +5,7 @@ import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.Profile
 
 class HomeViewModel : ViewModel(){
-    val mockFriendList = listOf<Profile>(
+    val mockProfileList = mutableListOf<Profile>(
         Profile(
             profileImage = R.drawable.img_monkey,
             name = "경지현",

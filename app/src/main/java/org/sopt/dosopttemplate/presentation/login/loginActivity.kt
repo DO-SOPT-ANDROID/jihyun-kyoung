@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import org.sopt.dosopttemplate.presentation.main.MainPageActivity
 import org.sopt.dosopttemplate.databinding.ActivityMainBinding
-import org.sopt.dosopttemplate.presentation.signIn.SingUpActivity
+import org.sopt.dosopttemplate.presentation.home.HomeActivity
+import org.sopt.dosopttemplate.presentation.signup.SingUpActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun goToMainPage() {
-        val intent = Intent(this, MainPageActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         with(intent) {
             putExtra("id", id)
             putExtra("mbti", mbti)
