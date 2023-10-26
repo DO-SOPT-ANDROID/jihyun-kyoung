@@ -22,15 +22,16 @@
 //}
 
 
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.main
 
-import org.sopt.dosopttemplate.fragments.MyPageFragment
+import MyPageFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivityHomeBinding
-import org.sopt.dosopttemplate.fragments.DOAndroidFragment
-import org.sopt.dosopttemplate.fragments.HomeFragment
+import org.sopt.dosopttemplate.presentation.doandroid.DOAndroidFragment
+import org.sopt.dosopttemplate.presentation.home.HomeFragment
 
 class MainPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding

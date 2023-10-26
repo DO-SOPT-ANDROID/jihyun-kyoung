@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -17,7 +17,8 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
     private val FRIEND_PROFILE = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return setViewHolder(parent, viewType)
+        var myView = setViewHolder(parent, viewType)
+        return myView
     }
 
     private fun setViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -25,23 +26,21 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
             MY_PROFILE -> {
                 setMyProfileViewHolder(parent)
             }
-
             FRIEND_PROFILE -> {
                 setFriendViewHolder(parent)
             }
-
             else -> {
                 throw RuntimeException("알 수 없는 view type error")
             }
         }
     }
 
-    private fun setFriendViewHolder(parent: ViewGroup): FriendViewHolder {
+    private fun setFriendViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         itemFriendBinding = ItemFriendBinding.inflate(inflater, parent, false)
         return FriendViewHolder(itemFriendBinding)
     }
 
-    private fun setMyProfileViewHolder(parent: ViewGroup): MyProfileViewHolder {
+    private fun setMyProfileViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         itemMyprofileBinding = ItemMyprofileBinding.inflate(inflater, parent, false)
         return MyProfileViewHolder(itemMyprofileBinding)
     }

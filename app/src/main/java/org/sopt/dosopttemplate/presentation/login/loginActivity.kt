@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.presentation.logIn
+package org.sopt.dosopttemplate.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import org.sopt.dosopttemplate.MainPageActivity
+import org.sopt.dosopttemplate.presentation.main.MainPageActivity
 import org.sopt.dosopttemplate.databinding.ActivityMainBinding
-import org.sopt.dosopttemplate.presentation.logIn.signUp.SingUpActivity
+import org.sopt.dosopttemplate.presentation.signIn.SingUpActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

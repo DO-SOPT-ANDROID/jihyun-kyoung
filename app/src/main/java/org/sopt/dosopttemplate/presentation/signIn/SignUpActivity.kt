@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.presentation.logIn.signUp
+package org.sopt.dosopttemplate.presentation.signIn
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

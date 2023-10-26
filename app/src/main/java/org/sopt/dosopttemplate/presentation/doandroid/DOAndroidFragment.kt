@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.fragments
+package org.sopt.dosopttemplate.presentation.doandroid
 
 import android.os.Bundle
 import android.view.LayoutInflater

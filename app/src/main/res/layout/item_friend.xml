@@ -11,7 +11,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_monkey"
+        android:src="@drawable/img_wolf"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

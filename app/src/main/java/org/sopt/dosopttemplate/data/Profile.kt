@@ -9,5 +9,5 @@ data class Profile(
     val musicArtist: String,
     val type: String
 ){
-    val music: String = "$musicTitle: $musicArtist"
+    val music: String = "🎧$musicTitle - $musicArtist"
 }
