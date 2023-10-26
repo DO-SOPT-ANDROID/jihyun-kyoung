@@ -8,43 +8,59 @@ import org.sopt.dosopttemplate.data.Profile
 import org.sopt.dosopttemplate.databinding.ItemFriendBinding
 import org.sopt.dosopttemplate.databinding.ItemMyprofileBinding
 
-class ProfileAdapter(context:Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
-    private var profileList:List<Profile> = emptyList()
+    private var profileList: List<Profile> = emptyList()
     private lateinit var itemFriendBinding: ItemFriendBinding
     private lateinit var itemMyprofileBinding: ItemMyprofileBinding
-    val MY_PROFILE = 0
-    val FRIEND_PROFILE = 1
+    private val MY_PROFILE = 0
+    private val FRIEND_PROFILE = 1
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType){
+        return setViewHolder(parent, viewType)
+    }
+
+    private fun setViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
             MY_PROFILE -> {
-                itemMyprofileBinding = ItemMyprofileBinding.inflate(inflater, parent, false)
-                MyProfileViewHolder(itemMyprofileBinding)
+                setMyProfileViewHolder(parent)
             }
+
             FRIEND_PROFILE -> {
-                itemFriendBinding = ItemFriendBinding.inflate(inflater, parent, false)
-                FriendViewHolder(itemFriendBinding)
+                setFriendViewHolder(parent)
             }
+
             else -> {
                 throw RuntimeException("알 수 없는 view type error")
             }
         }
     }
 
+    private fun setFriendViewHolder(parent: ViewGroup): FriendViewHolder {
+        itemFriendBinding = ItemFriendBinding.inflate(inflater, parent, false)
+        return FriendViewHolder(itemFriendBinding)
+    }
+
+    private fun setMyProfileViewHolder(parent: ViewGroup): MyProfileViewHolder {
+        itemMyprofileBinding = ItemMyprofileBinding.inflate(inflater, parent, false)
+        return MyProfileViewHolder(itemMyprofileBinding)
+    }
+
     override fun getItemViewType(position: Int): Int {
-        return if(profileList[position].type == "me") MY_PROFILE
+        return if (profileList[position].type == "me") MY_PROFILE
         else FRIEND_PROFILE
     }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(holder is FriendViewHolder)
+        if (holder is FriendViewHolder)
             holder.onBind(profileList[position])
-        else if(holder is MyProfileViewHolder)
+        else if (holder is MyProfileViewHolder)
             holder.onBind(profileList[0])
     }
 
     override fun getItemCount() = profileList.size
 
-    fun setProfileList(profileList:List<Profile> ) {
+    fun setProfileList(profileList: List<Profile>) {
         this.profileList = profileList.toList()
         notifyDataSetChanged()
     }

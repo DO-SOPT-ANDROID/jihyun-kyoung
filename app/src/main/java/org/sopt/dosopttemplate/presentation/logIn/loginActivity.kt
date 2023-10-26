@@ -1,17 +1,14 @@
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.logIn
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import org.sopt.dosopttemplate.MainPageActivity
 import org.sopt.dosopttemplate.databinding.ActivityMainBinding
-import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
+import org.sopt.dosopttemplate.presentation.logIn.signUp.SingUpActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
