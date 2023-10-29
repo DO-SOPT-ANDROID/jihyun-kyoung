@@ -13,7 +13,7 @@ abstract class BindingFragment<T: ViewBinding>(
     @LayoutRes private val layoutRes: Int,
 ) : Fragment() {
     private var _binding: T? = null
-    private val binding: T
+    protected val binding: T
         get() = requireNotNull(_binding) {"bidning object not created"}
 
     override fun onCreateView(
