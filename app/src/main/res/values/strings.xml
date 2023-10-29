@@ -16,4 +16,11 @@
 
     <string name="signUp_btn">회원가입</string>
     <string name="login_btn">로그인하기</string>
+
+    <string name = "name">이름</string>
+    <string name = "music">music</string>
+
+    <string name = "android_title">Let\'s go anDOroid</string>
+
+    <string name = "sign_up_title">SIGN UP</string>
 </resources>

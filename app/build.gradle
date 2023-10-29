@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'org.sopt.dosopttemplate'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         applicationId "org.sopt.dosopttemplate"

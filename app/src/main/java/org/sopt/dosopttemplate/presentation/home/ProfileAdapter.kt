@@ -45,16 +45,17 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
         return MyProfileViewHolder(itemMyprofileBinding)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (profileList[position].type == "me") MY_PROFILE
-        else FRIEND_PROFILE
+    override fun getItemViewType(position: Int): Int
+    = when(profileList[position].type) {
+        "me" -> MY_PROFILE
+        else -> FRIEND_PROFILE
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is FriendViewHolder)
-            holder.onBind(profileList[position])
-        else if (holder is MyProfileViewHolder)
-            holder.onBind(profileList[0])
+        when (holder) {
+            is FriendViewHolder -> holder.onBind(profileList[position])
+            is MyProfileViewHolder -> holder.onBind(profileList[0])
+        }
     }
 
     override fun getItemCount() = profileList.size

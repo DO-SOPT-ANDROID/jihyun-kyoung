@@ -6,9 +6,9 @@ import org.sopt.dosopttemplate.databinding.ItemFriendBinding
 
 class FriendViewHolder (private val binding:ItemFriendBinding):
     RecyclerView.ViewHolder(binding.root) {
-        fun onBind(friendData: Profile) {
-            binding.ivProfile.setImageResource(friendData.profileImage)
-            binding.tvName.text = friendData.name
-            binding.tvMusic.text = friendData.music
-        }
+    fun onBind(friendData: Profile) = with(binding) {
+        ivProfile.setImageResource(friendData.profileImage)
+        tvName.text = friendData.name
+        tvMusic.text = friendData.music
+    }
 }

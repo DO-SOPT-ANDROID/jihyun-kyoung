@@ -19,13 +19,6 @@ class HomeActivity : AppCompatActivity() {
         clickBottomNavigation()
 
     }
-//        private fun getDataFromLogin() {
-//
-//            intent.getStringExtra("id")
-//        binding.tvMbti.text = intent.getStringExtra("mbti")
-//        binding.tvNickName.text = intent.getStringExtra("nickName")
-//        binding.tvIntro.text = intent.getStringExtra("intro")
-//    }
     private fun initializeBinding() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
