@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
+import org.sopt.dosopttemplate.util.binding.BindingFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding
         get() = requireNotNull(_binding) {"binding object not created"}

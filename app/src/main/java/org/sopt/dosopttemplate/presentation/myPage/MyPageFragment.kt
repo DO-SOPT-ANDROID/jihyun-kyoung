@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
 import org.sopt.dosopttemplate.presentation.home.HomeViewModel
+import org.sopt.dosopttemplate.util.binding.BindingFragment
 
-class MyPageFragment : Fragment() {
+class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
     private var _binding:FragmentMypageBinding? = null
     private val binding: FragmentMypageBinding
         get() = requireNotNull(_binding) {"not yet created"}
