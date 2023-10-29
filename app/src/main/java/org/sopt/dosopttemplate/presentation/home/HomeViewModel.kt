@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.Profile
 
-class HomeViewModel : ViewModel(){
+class HomeViewModel : ViewModel() {
     val mockProfileList = mutableListOf<Profile>(
         Profile(
             profileImage = R.drawable.img_monkey,

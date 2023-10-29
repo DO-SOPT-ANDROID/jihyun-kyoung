@@ -26,9 +26,11 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
             MY_PROFILE -> {
                 setMyProfileViewHolder(parent)
             }
+
             FRIEND_PROFILE -> {
                 setFriendViewHolder(parent)
             }
+
             else -> {
                 throw RuntimeException("알 수 없는 view type error")
             }
@@ -45,8 +47,7 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
         return MyProfileViewHolder(itemMyprofileBinding)
     }
 
-    override fun getItemViewType(position: Int): Int
-    = when(profileList[position].type) {
+    override fun getItemViewType(position: Int): Int = when (profileList[position].type) {
         "me" -> MY_PROFILE
         else -> FRIEND_PROFILE
     }

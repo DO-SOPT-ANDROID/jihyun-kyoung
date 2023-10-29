@@ -19,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
         clickBottomNavigation()
 
     }
+
     private fun initializeBinding() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
