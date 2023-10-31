@@ -13,8 +13,6 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
     private var profileList: List<Profile> = emptyList()
     private lateinit var itemFriendBinding: ItemFriendBinding
     private lateinit var itemMyprofileBinding: ItemMyprofileBinding
-    private val MY_PROFILE = 0
-    private val FRIEND_PROFILE = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         var myView = setViewHolder(parent, viewType)
@@ -23,11 +21,11 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
 
     private fun setViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            MY_PROFILE -> {
+            ME -> {
                 setMyProfileViewHolder(parent)
             }
 
-            FRIEND_PROFILE -> {
+            FRIEND -> {
                 setFriendViewHolder(parent)
             }
 
@@ -48,8 +46,8 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     override fun getItemViewType(position: Int): Int = when (profileList[position].type) {
-        "me" -> MY_PROFILE
-        else -> FRIEND_PROFILE
+        Companion.ME -> ME
+        else -> FRIEND
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -64,6 +62,11 @@ class ProfileAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewH
     fun setProfileList(profileList: List<Profile>) {
         this.profileList = profileList.toList()
         notifyDataSetChanged()
+    }
+
+    companion object {
+        const val ME = 1
+        const val FRIEND = 0
     }
 }
 
