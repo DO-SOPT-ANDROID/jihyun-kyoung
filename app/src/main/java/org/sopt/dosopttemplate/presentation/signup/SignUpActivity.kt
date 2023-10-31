@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
 import org.sopt.dosopttemplate.util.ToastMaker.makeToast
+import org.sopt.dosopttemplate.util.hideKeyboard
 
 class SingUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
@@ -18,7 +19,14 @@ class SingUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        hideKeyboardOnClickScreen()
         clickSignUpBtn()
+    }
+
+    private fun hideKeyboardOnClickScreen() {
+        binding.root.setOnClickListener {
+            hideKeyboard(this)
+        }
     }
 
     private fun clickSignUpBtn() {
