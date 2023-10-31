@@ -24,7 +24,6 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
         binding.tvID.text = profile.id
         binding.tvMbti.text = profile.MBTI
         binding.tvIntro.text = profile.music
-
     }
 
 }

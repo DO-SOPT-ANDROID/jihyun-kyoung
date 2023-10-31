@@ -5,8 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class SignUpInfo(
-    var password: String?,
+    var password: String,
+    var id: String,
     var profile: Profile
-) : Parcelable{
-    constructor(): this(null, Profile())
-}
+) : Parcelable

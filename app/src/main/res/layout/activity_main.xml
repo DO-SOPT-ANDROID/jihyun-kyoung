@@ -40,6 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/id_hint"
+            android:text = "@={viewModel.id}"
+            android:inputType="text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_id" />
 
@@ -58,6 +60,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/pw_hint"
             android:inputType="textPassword"
+            android:text = "@={viewModel.password}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_password" />
 

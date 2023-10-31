@@ -6,10 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.data.Profile
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
-import org.sopt.dosopttemplate.presentation.home.HomeViewModel
-import org.sopt.dosopttemplate.presentation.login.LogInViewModel
 import org.sopt.dosopttemplate.util.ToastMaker.makeToast
 
 class SingUpActivity : AppCompatActivity() {
@@ -29,7 +26,7 @@ class SingUpActivity : AppCompatActivity() {
             if (viewModel.isConditionSatisfied())
                 signUp()
             else {
-                val errorString = "please check for" + viewModel.getInvalidFormatField()
+                val errorString = "please check for " + viewModel.getInvalidFormatField()
                 makeToast(this, errorString)
             }
         }
@@ -39,14 +36,6 @@ class SingUpActivity : AppCompatActivity() {
         makeToast(this, "회원가입 완료!")
         sendDataToLoginActivity()
 //      TODO:  saveSignUpData()
-    }
-
-    private fun saveSignUpData() {
-        val signUpInfo = viewModel.createSignUpInfo()
-        val homeViewModel by viewModels<HomeViewModel>()
-        homeViewModel.mockProfileList[0] = signUpInfo.profile ?: Profile()
-        val viewModel by viewModels<LogInViewModel>()
-        viewModel._signUpInfo = signUpInfo
     }
 
     private fun sendDataToLoginActivity() {

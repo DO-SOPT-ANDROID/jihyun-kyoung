@@ -14,29 +14,32 @@ data class Profile(
     val musicArtist: String?,
     val type: Int,
     val MBTI: String?,
-    val id: String?,
-    val intro: String?
+    val intro: String?,
+    val id: String?
 ) : Parcelable {
     val music: String = "🎧$musicTitle - $musicArtist"
+
     constructor(
-        @DrawableRes  profileImage: Int,
-         name: String,
-         musicTitle: String,
-         musicArtist: String,
-         type: Int,
-    ) : this(profileImage,
+        @DrawableRes profileImage: Int,
+        name: String,
+        musicTitle: String,
+        musicArtist: String,
+        type: Int,
+    ) : this(
+        profileImage,
         name,
         musicTitle,
         musicArtist,
         type,
         null,
         null,
-        null)
+        null
+    )
+
     constructor(
         name: String,
         type: Int,
         MBTI: String,
-        id: String,
         intro: String
     ) : this(
         R.drawable.img_noritake,
@@ -45,8 +48,9 @@ data class Profile(
         null,
         type,
         MBTI,
-        id,
-        intro)
+        intro,
+        null
+    )
 
     constructor(
         profileImage: Int,
@@ -55,7 +59,6 @@ data class Profile(
         musicArtist: String,
         type: Int,
         MBTI: String,
-        id: String
     ) : this(
         profileImage,
         name,
@@ -63,16 +66,7 @@ data class Profile(
         musicArtist,
         type,
         MBTI,
-        id,
+        null,
         null
     )
-
-    constructor(): this(R.drawable.img_noritake,
-        "no name",
-        null,
-        null,
-        1,
-        null,
-        null,
-        null)
 }

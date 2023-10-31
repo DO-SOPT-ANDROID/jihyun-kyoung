@@ -13,7 +13,8 @@ class HomeViewModel : ViewModel() {
             musicArtist = "데이식스",
             type = ME,
             MBTI = "INTJ",
-            id = "@jihyune_hi"
+            intro = "hello everyone",
+            id = "jihyune_hi"
         ),
         Profile(
             profileImage = R.drawable.img_wolf,
