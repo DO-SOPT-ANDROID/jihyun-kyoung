@@ -68,8 +68,5 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        const val SIGNUPINFO = "sign up info"
-    }
 }
 
