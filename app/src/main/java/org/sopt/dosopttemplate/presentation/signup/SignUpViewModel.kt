@@ -14,6 +14,9 @@ class SignUpViewModel : ViewModel() {
     val nickName: MutableLiveData<String> = MutableLiveData()
     val mbti: MutableLiveData<String> = MutableLiveData()
     val intro: MutableLiveData<String> = MutableLiveData()
+    //todo make music, artist validation
+    val music: MutableLiveData<String> = MutableLiveData()
+    val artist: MutableLiveData<String> = MutableLiveData()
     private final val MAX = 20
 
     fun isConditionSatisfied(): Boolean {
@@ -27,6 +30,7 @@ class SignUpViewModel : ViewModel() {
                 && isNickNameFormatValid()
                 && isMbtiFormatValid()
                 && isIntroFormatValid()
+                && isMusicFormatValid()
     }
 
     private fun isIDFormatValid(): Boolean = checkStringLengthOf(id.value, 6, 10)
@@ -38,6 +42,9 @@ class SignUpViewModel : ViewModel() {
         checkStringLengthOf(mbti.value, 4, 4) && isAlphabet(mbti.value.toString())
 
     private fun isIntroFormatValid(): Boolean = checkStringLengthOf(intro.value, 1, MAX)
+
+    private fun isMusicFormatValid(): Boolean = checkStringLengthOf(music.value, 1, MAX)
+
     private fun checkStringLengthOf(str: String?, min: Int, max: Int): Boolean =
         str?.length in min..max
 

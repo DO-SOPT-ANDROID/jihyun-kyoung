@@ -17,7 +17,7 @@ data class Profile(
     val intro: String?,
     val id: String?
 ) : Parcelable {
-    val music: String = "🎧$musicTitle - $musicArtist"
+    val music: Music? = (musicTitle?.let { musicArtist?.let { it1 -> Music(it, it1) } } ?:null) as Music
 
     constructor(
         @DrawableRes profileImage: Int,

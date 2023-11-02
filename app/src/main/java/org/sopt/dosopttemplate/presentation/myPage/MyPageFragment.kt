@@ -23,7 +23,7 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
         binding.tvNickName.text = profile.name
         binding.tvID.text = profile.id
         binding.tvMbti.text = profile.MBTI
-        binding.tvIntro.text = profile.music
+        binding.tvIntro.text = profile.intro
     }
 
 }

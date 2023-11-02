@@ -9,6 +9,9 @@
             name="viewModel"
             type="org.sopt.dosopttemplate.presentation.signup.SignUpViewModel" />
     </data>
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,7 +69,8 @@
             android:hint="@string/pw_hint"
             android:text = "@={viewModel.password}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_password" />
+            app:layout_constraintTop_toBottomOf="@id/tv_password"
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/tv_nickName"
@@ -85,7 +89,8 @@
             android:hint="@string/nickName_hint"
             android:text = "@={viewModel.nickName}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_nickName" />
+            app:layout_constraintTop_toBottomOf="@id/tv_nickName"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/tv_mbti"
@@ -104,7 +109,8 @@
             android:hint="@string/mbti_hint"
             android:text = "@={viewModel.mbti}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+            app:layout_constraintTop_toBottomOf="@id/tv_mbti"
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/tv_intro"
@@ -123,7 +129,50 @@
             android:hint="@string/intro_hint"
             android:text = "@={viewModel.intro}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_intro" />
+            app:layout_constraintTop_toBottomOf="@id/tv_intro"
+            android:inputType="text"/>
+
+        <TextView
+            android:id="@+id/tv_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/music_title"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_intro" />
+
+        <EditText
+            android:id="@+id/et_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/music_hint"
+            android:text = "@={viewModel.music}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_music"
+            android:inputType="text"/>
+
+
+        <TextView
+            android:id="@+id/tv_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/artist_title"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_music"
+            />
+
+        <EditText
+            android:id="@+id/et_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/artist_hint"
+            android:text = "@={viewModel.artist}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_artist"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/bt_signUp"
@@ -136,4 +185,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </ScrollView>-->
 </layout>

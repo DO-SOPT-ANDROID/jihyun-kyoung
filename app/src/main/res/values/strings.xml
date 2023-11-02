@@ -14,6 +14,11 @@
     <string name="mbti_title">MBTI</string>
     <string name="mbti_hint">MBTI를 입력하세요</string>
 
+    <string name="music_title">Music</string>
+    <string name="music_hint">곡 제목을 입력하세요</string>
+    <string name="artist_title">Artist</string>
+    <string name="artist_hint">가수를 입력하세요</string>
+
     <string name="signUp_btn">회원가입</string>
     <string name="login_btn">로그인하기</string>
 
@@ -24,4 +29,5 @@
     <string name = "sign_up_title">SIGN UP</string>
     <string name = "music">my music</string>
     <string name = "musicArtist">artist1</string>
+
 </resources>
