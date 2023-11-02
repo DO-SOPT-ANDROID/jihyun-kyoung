@@ -69,4 +69,7 @@ data class Profile(
         null,
         null
     )
+
+    fun isContainMusic():Boolean = (music!=null)
+    fun getMusic():String = if(isContainMusic()) music!!.string else " "
 }

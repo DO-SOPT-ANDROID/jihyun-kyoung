@@ -20,11 +20,6 @@ class SignUpViewModel : ViewModel() {
     private final val MAX = 20
 
     fun isConditionSatisfied(): Boolean {
-        Log.v("id", id.value.toString())
-        Log.v("password", password.value.toString())
-        Log.v("nickName", nickName.value.toString())
-        Log.v("mbti", mbti.value.toString())
-        Log.v("intro", intro.value.toString())
         return isIDFormatValid()
                 && isPasswordFormatValid()
                 && isNickNameFormatValid()

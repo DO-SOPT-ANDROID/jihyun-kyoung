@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
                 signUpInfo =
                     result.data?.getParcelable(LogInViewModel.SIGNUPINFO, SignUpInfo::class.java)
                         ?: return@registerForActivityResult
-                Log.v("signUp Info", signUpInfo.id)
+
             }
         }
     }

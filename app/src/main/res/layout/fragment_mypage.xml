@@ -39,7 +39,7 @@
             android:layout_marginTop="30dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@string/intro_hint"
+            android:text=""
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="@id/iv_main"
             app:layout_constraintStart_toStartOf="@id/tv_nickName" />
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/id_hint"
+            android:text=""
             android:textColor="@color/grey"
             android:textSize="25dp"
             app:layout_constraintStart_toStartOf="@id/iv_main"
@@ -74,17 +74,49 @@
             android:textSize="30dp"
             app:layout_constraintStart_toStartOf="@id/iv_main"
             app:layout_constraintTop_toBottomOf="@id/tv_ID" />
-
         <TextView
             android:id="@+id/tv_mbti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/mbti_hint"
+            android:text=""
             android:textColor="@color/grey"
             android:textSize="25dp"
             app:layout_constraintStart_toStartOf="@id/iv_main"
             app:layout_constraintTop_toBottomOf="@id/tv_mbtiTitle" />
+        <TextView
+            android:id="@+id/tv_musicTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/music_title"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="@id/iv_main"
+            app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+        <TextView
+            android:id="@+id/tv_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:textColor="@color/grey"
+            android:textSize="25dp"
+            app:layout_constraintStart_toStartOf="@id/iv_main"
+            app:layout_constraintTop_toBottomOf="@id/tv_musicTitle" />
 
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/FABEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_edit_white_24"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
