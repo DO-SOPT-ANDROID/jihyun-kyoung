@@ -23,7 +23,8 @@ class SingUpActivity : AppCompatActivity() {
 
     private fun clickSignUpBtn() {
         binding.btSignUp.setOnClickListener() {
-            if (viewModel.isConditionSatisfied())
+//            if (viewModel.isConditionSatisfied())
+            if(true)
                 signUp()
             else {
                 val errorString = "please check for " + viewModel.getInvalidFormatField()
@@ -42,7 +43,6 @@ class SingUpActivity : AppCompatActivity() {
         with(intent) {
             val signUpData = viewModel.createSignUpInfo()
             putExtra(SIGNUPINFO, signUpData)
-            Log.v(SIGNUPINFO, signUpData.password ?: "")
         }
         setResult(RESULT_OK, intent)
         finish()

@@ -57,6 +57,7 @@ class SignUpViewModel : ViewModel() {
     fun createSignUpInfo(): SignUpInfo {
         profile = Profile(toString(nickName), ME, toString(mbti), toString(intro))
         signUpInfo = SignUpInfo(toString(password), toString(id), profile)
+        Log.v("test", signUpInfo.password)
         return signUpInfo
     }
 
