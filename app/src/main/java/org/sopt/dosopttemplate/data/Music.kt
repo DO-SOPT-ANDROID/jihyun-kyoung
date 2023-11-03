@@ -3,7 +3,7 @@ package org.sopt.dosopttemplate.data
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Music (val title: String, val artist: String): Parcelable {
+data class Music(val title: String, val artist: String) : Parcelable {
     val string: String = "🎧$title - $artist"
 
     constructor(parcel: Parcel) : this(

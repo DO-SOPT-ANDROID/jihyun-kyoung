@@ -30,4 +30,7 @@
     <string name = "music">my music</string>
     <string name = "musicArtist">artist1</string>
 
+    <string name = "editMyPageTitle">Edit My Page</string>
+    <string name = "finish">완료</string>
+
 </resources>

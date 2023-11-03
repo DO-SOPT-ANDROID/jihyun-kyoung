@@ -21,6 +21,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         super.onViewCreated(view, savedInstanceState)
         val profileAdapter = ProfileAdapter(requireContext())
         binding.rvProfiles.adapter = profileAdapter
-        profileAdapter.setProfileList(viewModel.mockProfileList)
+        profileAdapter.setProfileList(viewModel.getMockProfileLIst())
     }
 }

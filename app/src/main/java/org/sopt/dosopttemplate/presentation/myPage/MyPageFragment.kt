@@ -22,7 +22,7 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel by viewModels<HomeViewModel>()
-        profile = viewModel.mockProfileList[0]
+        profile = viewModel.getProfile(0)
         setMyPage()
     }
 
