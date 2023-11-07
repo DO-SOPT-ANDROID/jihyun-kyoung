@@ -1,7 +1,11 @@
 package org.sopt.dosopttemplate.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivityHomeBinding
@@ -10,7 +14,8 @@ import org.sopt.dosopttemplate.presentation.doandroid.DOAndroidFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-
+    private val viewModel by viewModels<HomeViewModel>()
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeBinding()
@@ -21,8 +26,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initializeBinding() {
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        binding.lifecycleOwner = this
     }
 
     private fun initializeHomeFragment() {

@@ -24,8 +24,14 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
         val viewModel by viewModels<HomeViewModel>()
         profile = viewModel.getProfile(0)
         setMyPage()
+        clickFABEdit()
     }
 
+    private fun clickFABEdit() {
+        binding.FABEdit.setOnClickListener() {
+
+        }
+    }
     private fun setMyPage() {
         binding.tvID.text = profile.id
         binding.tvIntro.text = profile.intro
