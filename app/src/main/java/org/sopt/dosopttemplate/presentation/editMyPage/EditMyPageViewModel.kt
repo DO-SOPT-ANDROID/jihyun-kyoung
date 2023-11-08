@@ -11,6 +11,7 @@ class EditMyPageViewModel : ViewModel() {
     val musicArtist: MutableLiveData<String> = MutableLiveData()
     val intro: MutableLiveData<String> = MutableLiveData()
 
+    val tmpString: String = "hello"
     fun getNewProfile(profile: Profile): Profile {
         profile.MBTI = mbti.toString()
         profile.musicTitle = musicTitle.toString()

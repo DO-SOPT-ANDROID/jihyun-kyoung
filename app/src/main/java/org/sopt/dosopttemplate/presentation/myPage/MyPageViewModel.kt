@@ -18,4 +18,8 @@ class MyPageViewModel : ViewModel() {
 //        mbti = profile.MBTI
 //        music = if (profile.isContainMusic()) profile.music.string else ""
 //    }
+
+    companion object {
+        const val NEWPROFILE = "new profile"
+    }
 }
