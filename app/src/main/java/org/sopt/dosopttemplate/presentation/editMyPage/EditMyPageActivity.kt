@@ -33,12 +33,12 @@ class EditMyPageActivity : AppCompatActivity() {
     }
 
     private fun getNewProfile() {
-        myProfile = viewModel.getNewProfile(myProfile)
+        myProfile = viewModel.setNewProfile(myProfile)
     }
 
     private fun finishActivity() {
         with(intent) {
-            myProfile = viewModel.getNewProfile(myProfile)
+            myProfile = viewModel.setNewProfile(myProfile)
             putExtra(EditMyPageViewModel.NEWPROFILE, myProfile)
         }
         setResult(RESULT_OK, intent)

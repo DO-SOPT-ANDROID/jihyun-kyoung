@@ -12,14 +12,19 @@ class EditMyPageViewModel : ViewModel() {
     val intro: MutableLiveData<String> = MutableLiveData()
 
     val tmpString: String = "hello"
-    fun getNewProfile(myProfile: Profile): Profile {
-    //todo: check if value is empty
-        myProfile.MBTI = mbti.value.toString()
-        myProfile.musicTitle = musicTitle.value.toString()
-        myProfile.name = nickName.toString()
-        myProfile.musicArtist = musicArtist.value.toString()
-        myProfile.intro = intro.toString()
+    fun setNewProfile(myProfile: Profile): Profile {
+        if(!(mbti.value.isNullOrEmpty()))
+            myProfile.MBTI = mbti.value.toString()
+        if(!(musicTitle.value.isNullOrEmpty()))
+            myProfile.musicTitle = musicTitle.value.toString()
+        if(!(nickName.value.isNullOrEmpty()))
+            myProfile.name = nickName.toString()
+        if(!(musicArtist.value.isNullOrEmpty()))
+            myProfile.musicArtist = musicArtist.value.toString()
+        if(!(intro.value.isNullOrEmpty()))
+            myProfile.intro = intro.toString()
         myProfile.setMusic()
+
         return myProfile
     }
 
