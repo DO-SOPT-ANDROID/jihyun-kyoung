@@ -73,7 +73,7 @@ data class Profile(
     )
 
     fun isContainMusic(): Boolean = (music != null)
-    fun getMusic(): String = if (isContainMusic()) music!!.string else " "
+    fun getMusic(): String = if (isContainMusic()) music!!.string else "no music"
 
     fun setMusic() {
         if (musicArtist != null && musicTitle != null)

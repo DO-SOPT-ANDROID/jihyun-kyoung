@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.Profile
@@ -22,8 +21,8 @@ import org.sopt.dosopttemplate.util.logProfile
 class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
     private lateinit var profile: Profile
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    private val viewModel by viewModels<MyPageViewModel>()
-    private val homeViewModel by activityViewModels<HomeViewModel>()
+    private val myPageViewModel by viewModels<MyPageViewModel>()
+    private val viewModel by viewModels<HomeViewModel>()
     fun newInstance(): MyPageFragment {
         val args = Bundle()
         val fragment = MyPageFragment()
@@ -33,16 +32,16 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.viewModel = viewModel
+        binding.viewModel = myPageViewModel
         setProfile()
-        setMyPage()
+        myPageViewModel.setNewProfileAndSetPage(profile)
         clickFABEdit()
         setNewProfile()
     }
 
     private fun setProfile() {
-        profile = homeViewModel.getProfile(0)
-        logProfile(homeViewModel.getProfile(0))
+        profile = viewModel.getProfile(0)
+        logProfile(viewModel.getProfile(0))
     }
 
     private fun clickFABEdit() {
@@ -60,18 +59,8 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
                 profile =
                     result.data?.getParcelable(EditMyPageViewModel.NEWPROFILE, Profile::class.java)
                         ?: return@registerForActivityResult
-                setMyPage()
+                myPageViewModel.setNewProfileAndSetPage(profile)
             }
         }
     }
-
-    private fun setMyPage() {
-        binding.tvID.text = profile.id
-        binding.tvIntro.text = profile.intro
-        binding.tvMbti.text = profile.MBTI
-        binding.tvNickName.text = profile.name
-        binding.tvMusic.text = profile.getMusic()
-    }
-
-
 }
