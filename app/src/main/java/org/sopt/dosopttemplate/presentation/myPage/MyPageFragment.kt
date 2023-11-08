@@ -33,6 +33,7 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = myPageViewModel
+        binding.lifecycleOwner = this
         setProfile()
         myPageViewModel.setNewProfileAndSetPage(profile)
         clickFABEdit()
@@ -41,7 +42,6 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
 
     private fun setProfile() {
         profile = viewModel.getProfile(0)
-        logProfile(viewModel.getProfile(0))
     }
 
     private fun clickFABEdit() {
@@ -59,6 +59,7 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
                 profile =
                     result.data?.getParcelable(EditMyPageViewModel.NEWPROFILE, Profile::class.java)
                         ?: return@registerForActivityResult
+//                logProfile(profile)
                 myPageViewModel.setNewProfileAndSetPage(profile)
             }
         }

@@ -17,7 +17,7 @@ fun logProfile(profile: Profile) {
     Log.v("nick name", profile.name.toString())
     Log.v("mbti", profile.MBTI.toString())
     Log.v("music title", profile.getMusic())
-    Log.v("music title", profile.getMusic())
+    Log.v("intro", profile.intro.toString())
 
 
 }

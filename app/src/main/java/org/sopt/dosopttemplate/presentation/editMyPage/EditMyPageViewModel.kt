@@ -3,6 +3,7 @@ package org.sopt.dosopttemplate.presentation.editMyPage
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.sopt.dosopttemplate.data.Profile
+import org.sopt.dosopttemplate.util.logProfile
 
 class EditMyPageViewModel : ViewModel() {
     val nickName: MutableLiveData<String> = MutableLiveData()
@@ -22,9 +23,9 @@ class EditMyPageViewModel : ViewModel() {
         if(!(musicArtist.value.isNullOrEmpty()))
             myProfile.musicArtist = musicArtist.value.toString()
         if(!(intro.value.isNullOrEmpty()))
-            myProfile.intro = intro.toString()
+            myProfile.intro = intro.value.toString()
         myProfile.setMusic()
-
+        logProfile(myProfile)
         return myProfile
     }
 
