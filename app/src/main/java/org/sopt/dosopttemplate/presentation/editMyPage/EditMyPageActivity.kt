@@ -18,27 +18,27 @@ class EditMyPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_editmypage)
-        binding.profile = homeViewModel.getProfile(0)
         binding.lifecycleOwner = this
         myProfile = homeViewModel.getProfile(0)
         binding.viewModel = viewModel
+        viewModel.setProfile(myProfile)
+        viewModel.initPage()
         clickFinishButton()
     }
 
     private fun clickFinishButton() {
         binding.btFinish.setOnClickListener() {
-            getNewProfile()
-            finishActivity()
+            setNewProfile()
+            getNewProfileAndParseIntent()
         }
     }
 
-    private fun getNewProfile() {
-        myProfile = viewModel.setNewProfile(myProfile)
+    private fun setNewProfile() {
+        myProfile = viewModel.setNewProfile()
     }
 
-    private fun finishActivity() {
+    private fun getNewProfileAndParseIntent() {
         with(intent) {
-            myProfile = viewModel.setNewProfile(myProfile)
             putExtra(EditMyPageViewModel.NEWPROFILE, myProfile)
         }
         setResult(RESULT_OK, intent)
