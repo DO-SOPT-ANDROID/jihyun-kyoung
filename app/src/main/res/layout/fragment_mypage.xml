@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <import type = "android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="org.sopt.dosopttemplate.presentation.myPage.MyPageViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/iv_main"
             android:layout_width="90dp"
@@ -74,6 +77,7 @@
             android:textSize="30dp"
             app:layout_constraintStart_toStartOf="@id/iv_main"
             app:layout_constraintTop_toBottomOf="@id/tv_ID" />
+
         <TextView
             android:id="@+id/tv_mbti"
             android:layout_width="wrap_content"
@@ -84,6 +88,7 @@
             android:textSize="25dp"
             app:layout_constraintStart_toStartOf="@id/iv_main"
             app:layout_constraintTop_toBottomOf="@id/tv_mbtiTitle" />
+
         <TextView
             android:id="@+id/tv_musicTitle"
             android:layout_width="wrap_content"
@@ -93,6 +98,7 @@
             android:textSize="30dp"
             app:layout_constraintStart_toStartOf="@id/iv_main"
             app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+
         <TextView
             android:id="@+id/tv_music"
             android:layout_width="wrap_content"
@@ -105,7 +111,6 @@
             app:layout_constraintTop_toBottomOf="@id/tv_musicTitle" />
 
 
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/FABEdit"
             android:layout_width="wrap_content"
@@ -116,7 +121,6 @@
             android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_edit_white_24"
-            />
+            app:srcCompat="@drawable/ic_edit_white_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

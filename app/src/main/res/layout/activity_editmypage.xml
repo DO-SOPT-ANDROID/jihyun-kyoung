@@ -8,25 +8,26 @@
         <variable
             name="viewModel"
             type="org.sopt.dosopttemplate.presentation.editMyPage.EditMyPageViewModel" />
+
         <variable
             name="profile"
             type="org.sopt.dosopttemplate.data.Profile" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
             android:text="@string/editMyPageTitle"
             android:textSize="30sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/tv_title"
-            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="50dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_main"
@@ -61,13 +62,13 @@
             app:layout_constraintTop_toBottomOf="@id/et_artist" />
 
         <EditText
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:hint="@string/intro_hint"
             android:id="@+id/tv_ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:hint="@string/intro_hint"
+            android:singleLine="true"
             android:text="@={viewModel.intro}"
             android:textColor="@color/grey"
             android:textSize="20dp"
@@ -91,12 +92,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
+            android:hint="@string/mbti_hint"
             android:singleLine="true"
             android:text="@={viewModel.mbti}"
-            android:hint="@string/mbti_hint"
             android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_mbtiTitle"
-            app:layout_constraintStart_toStartOf="@id/tv_mbtiTitle" />
+            app:layout_constraintStart_toStartOf="@id/tv_mbtiTitle"
+            app:layout_constraintTop_toBottomOf="@id/tv_mbtiTitle" />
 
         <TextView
             android:id="@+id/tv_musicTitle"
@@ -114,12 +115,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
+            android:hint="@string/music_hint"
             android:singleLine="true"
             android:text="@={viewModel.musicTitle}"
-            android:hint="@string/music_hint"
             android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_musicTitle"
-            app:layout_constraintStart_toStartOf="@id/tv_musicTitle" />
+            app:layout_constraintStart_toStartOf="@id/tv_musicTitle"
+            app:layout_constraintTop_toBottomOf="@id/tv_musicTitle" />
 
         <EditText
             android:id="@+id/et_artist"
@@ -127,21 +128,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
+            android:hint="@string/artist_hint"
             android:singleLine="true"
             android:text="@={viewModel.musicArtist}"
-            android:hint="@string/artist_hint"
             android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@id/et_music"
-            app:layout_constraintStart_toStartOf="@id/tv_musicTitle" />
+            app:layout_constraintStart_toStartOf="@id/tv_musicTitle"
+            app:layout_constraintTop_toBottomOf="@id/et_music" />
 
         <Button
             android:id="@+id/bt_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="30dp"
-            android:text="@string/finish" />
+            android:text="@string/finish"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

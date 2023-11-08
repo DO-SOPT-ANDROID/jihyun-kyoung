@@ -2,7 +2,6 @@ package org.sopt.dosopttemplate.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -46,8 +45,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun clickLoginBtn() {
         binding.btLogin.setOnClickListener() {
-
-            Log.v("signUp Info", signUpInfo.id)
+//            Log.v("signUp Info", signUpInfo.id)
             if (viewModel.isLoginAuthorized(signUpInfo)) {
                 makeToast(this, "로그인 성공!")
                 goToMainPage()

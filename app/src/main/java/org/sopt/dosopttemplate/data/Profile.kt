@@ -17,8 +17,10 @@ data class Profile(
     var intro: String?,
     val id: String?
 ) : Parcelable {
-    var music: Music? = setMusic()
-
+    var music:Music? = null
+    init {
+        setMusic()
+    }
     constructor(
         @DrawableRes profileImage: Int,
         name: String,
@@ -73,10 +75,10 @@ data class Profile(
     fun isContainMusic(): Boolean = (music != null)
     fun getMusic(): String = if (isContainMusic()) music!!.string else " "
 
-    fun setMusic(): Music? {
-        var music: Music? = null
+    fun setMusic() {
         if (musicArtist != null && musicTitle != null)
-            music = Music(musicTitle!!, musicArtist!!)
-        return music
+            this.music = Music(musicTitle!!, musicArtist!!)
+        else this.music = null
+
     }
 }

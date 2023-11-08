@@ -13,32 +13,36 @@ class EditMyPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditmypageBinding
     private val homeViewModel by viewModels<HomeViewModel>()
     private val viewModel by viewModels<EditMyPageViewModel>()
-    private lateinit var newProfile: Profile
+    private lateinit var myProfile: Profile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_editmypage)
         binding.profile = homeViewModel.getProfile(0)
         binding.lifecycleOwner = this
-        newProfile = homeViewModel.getProfile(0)
+        myProfile = homeViewModel.getProfile(0)
         binding.viewModel = viewModel
-
+        clickFinishButton()
     }
 
-    private fun finishButtonSetOnClickListener() {
+    private fun clickFinishButton() {
         binding.btFinish.setOnClickListener() {
             getNewProfile()
-            setNewProfile()
+            finishActivity()
         }
     }
 
     private fun getNewProfile() {
-        newProfile = viewModel.getNewProfile(newProfile)
+        myProfile = viewModel.getNewProfile(myProfile)
     }
 
-    private fun setNewProfile() {
-        homeViewModel.setNewProfile(newProfile, 0)
+    private fun finishActivity() {
+        with(intent) {
+            myProfile = viewModel.getNewProfile(myProfile)
+            putExtra(EditMyPageViewModel.NEWPROFILE, myProfile)
+        }
+        setResult(RESULT_OK, intent)
+        finish()
     }
-
 
 }
