@@ -28,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
     private fun initializeBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
     }
 
     private fun initializeHomeFragment() {

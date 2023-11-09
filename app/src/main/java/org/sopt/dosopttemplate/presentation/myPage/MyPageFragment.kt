@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.Profile
@@ -16,13 +17,12 @@ import org.sopt.dosopttemplate.presentation.home.HomeViewModel
 import org.sopt.dosopttemplate.presentation.myPage.MyPageViewModel
 import org.sopt.dosopttemplate.util.binding.BindingFragment
 import org.sopt.dosopttemplate.util.getParcelable
-import org.sopt.dosopttemplate.util.logProfile
 
 class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
     private lateinit var profile: Profile
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private val myPageViewModel by viewModels<MyPageViewModel>()
-    private val viewModel by viewModels<HomeViewModel>()
+    private val homeViewModel by activityViewModels<HomeViewModel>()
     fun newInstance(): MyPageFragment {
         val args = Bundle()
         val fragment = MyPageFragment()
@@ -41,7 +41,7 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
     }
 
     private fun setProfile() {
-        profile = viewModel.getProfile(0)
+        profile = homeViewModel.getProfile(0)
     }
 
     private fun clickFABEdit() {
@@ -59,7 +59,7 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
                 profile =
                     result.data?.getParcelable(EditMyPageViewModel.NEWPROFILE, Profile::class.java)
                         ?: return@registerForActivityResult
-//                logProfile(profile)
+                homeViewModel.setNewProfile(profile, 0)
                 myPageViewModel.setNewProfileAndSetPage(profile)
             }
         }

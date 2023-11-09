@@ -14,14 +14,10 @@ class EditMyPageViewModel : ViewModel() {
     val id: MutableLiveData<String> = MutableLiveData()
 
     fun setNewProfile(): Profile {
-        if (!(mbti.value.isNullOrEmpty()))
-            profile.MBTI = mbti.value.toString()
-        if (!(musicTitle.value.isNullOrEmpty()))
-            profile.musicTitle = musicTitle.value.toString()
-        if (!(musicArtist.value.isNullOrEmpty()))
-            profile.musicArtist = musicArtist.value.toString()
-        if (!(intro.value.isNullOrEmpty()))
-            profile.intro = intro.value.toString()
+        if (!(mbti.value.isNullOrEmpty())) profile.MBTI = mbti.value.toString()
+        if (!(musicTitle.value.isNullOrEmpty())) profile.musicTitle = musicTitle.value.toString()
+        if (!(musicArtist.value.isNullOrEmpty())) profile.musicArtist = musicArtist.value.toString()
+        if (!(intro.value.isNullOrEmpty())) profile.intro = intro.value.toString()
         profile.setMusic()
 //        logProfile(profile)
         return profile

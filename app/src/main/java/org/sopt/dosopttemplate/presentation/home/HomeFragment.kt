@@ -20,6 +20,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val profileAdapter = ProfileAdapter(requireContext())
+        binding.lifecycleOwner = this
         binding.rvProfiles.adapter = profileAdapter
         profileAdapter.setProfileList(viewModel.getMockProfileLIst())
     }
