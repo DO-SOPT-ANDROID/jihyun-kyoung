@@ -14,10 +14,12 @@ class SignUpViewModel : ViewModel() {
     val nickName: MutableLiveData<String> = MutableLiveData()
     val mbti: MutableLiveData<String> = MutableLiveData()
     val intro: MutableLiveData<String> = MutableLiveData()
+
     //todo make music, artist validation
     val music: MutableLiveData<String> = MutableLiveData()
     val artist: MutableLiveData<String> = MutableLiveData()
     private final val MAX = 20
+
 
     fun isConditionSatisfied(): Boolean {
         return isIDFormatValid()
