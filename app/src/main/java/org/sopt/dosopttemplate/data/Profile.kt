@@ -8,21 +8,24 @@ import org.sopt.dosopttemplate.R
 @Parcelize
 data class Profile(
     @DrawableRes
-    val profileImage: Int,
+    val profileImage: Int?,
     var name: String,
     var musicTitle: String?,
     var musicArtist: String?,
     val type: Int,
     var MBTI: String?,
     var intro: String?,
-    val id: String?
+    val id: String?,
+    val email: String?,
+    val avatar: String?,
+    val idInt: Int?
 ) : Parcelable {
     var music:Music? = null
     init {
         setMusic()
     }
     constructor(
-        @DrawableRes profileImage: Int,
+        profileImage: Int,
         name: String,
         musicTitle: String,
         musicArtist: String,
@@ -35,6 +38,9 @@ data class Profile(
         type,
         null,
         null,
+        null,
+        null,
+        null,
         null
     )
 
@@ -44,13 +50,16 @@ data class Profile(
         MBTI: String,
         intro: String
     ) : this(
-        R.drawable.img_noritake,
+        R.drawable.img_monkey,
         name,
         null,
         null,
         type,
         MBTI,
         intro,
+        null,
+        null,
+        null,
         null
     )
 
@@ -69,9 +78,53 @@ data class Profile(
         type,
         MBTI,
         null,
+        null,
+        null,
+        null,
         null
     )
 
+    constructor(
+        profileImage: Int,
+        name: String,
+        musicTitle: String?,
+        musicArtist: String?,
+        type: Int,
+        MBTI: String?,
+        intro: String?,
+        id: String?
+    ) : this(
+        profileImage,
+        name,
+        musicTitle,
+        musicArtist,
+        type,
+        MBTI,
+        intro,
+        id,
+        null,
+        null,
+        null
+    )
+
+    constructor(
+        name: String,
+        email: String,
+        avatar: String,
+        idInt: Int
+    ): this(
+        null,
+        name,
+        null,
+        null,
+        FRIEND,
+        null,
+        null,
+        null,
+        email,
+        avatar,
+        idInt
+    )
     fun isContainMusic(): Boolean = (music != null)
     fun getMusic(): String = if (isContainMusic()) music!!.string else "no music"
 
@@ -80,5 +133,9 @@ data class Profile(
             this.music = Music(musicTitle!!, musicArtist!!)
         else this.music = null
 
+    }
+    companion object {
+        const val ME = 1
+        const val FRIEND = 0
     }
 }

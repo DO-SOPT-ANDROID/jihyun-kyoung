@@ -33,7 +33,7 @@
     <string name = "editMyPageTitle">Edit My Page</string>
     <string name = "finish">완료</string>
 
-    <string name="loginSuccess">로그인에 성공하였고</string>
+    <string name="loginSuccess">로그인에 성공하였고 유저 아이디는</string>
     <string name = "end">입니다.</string>
     <string name="serverError">서버 에러 발생</string>
 
