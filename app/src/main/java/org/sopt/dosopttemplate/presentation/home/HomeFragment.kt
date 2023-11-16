@@ -50,8 +50,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
                 override fun onFailure(call: Call<ResponseGetFollwerDto>, t: Throwable) {
                     Log.v("serverError", t.toString())
-                    val context = context as Activity
-                    ToastMaker.makeToast(context, getString(R.string.serverError))
+                    ToastMaker.makeToast(context as Activity, getString(R.string.serverError))
                 }
             })
     }

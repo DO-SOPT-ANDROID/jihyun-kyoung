@@ -67,17 +67,9 @@ class SingUpActivity : AppCompatActivity() {
 
     private fun processSignUp() {
         makeToast(this, "회원가입 완료!")
-        sendDataToLoginActivity()
-//      TODO:  saveSignUpData()
-    }
-
-    private fun sendDataToLoginActivity() {
-        with(intent) {
-            val signUpData = viewModel.createSignUpInfo()
-            putExtra(SIGNUPINFO, signUpData)
-        }
         setResult(RESULT_OK, intent)
         finish()
+//      TODO:  saveSignUpData()
     }
 
     companion object {
