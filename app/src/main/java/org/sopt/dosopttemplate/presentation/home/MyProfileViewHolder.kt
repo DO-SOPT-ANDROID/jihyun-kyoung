@@ -9,6 +9,6 @@ class MyProfileViewHolder(private val binding: ItemMyprofileBinding) :
     fun onBind(myProfileData: Profile) {
         if (myProfileData.profileImage != null)
             binding.ivProfile.setImageResource(myProfileData.profileImage)
-        binding.tvName.text = myProfileData.name
+        binding.tvName.text = myProfileData.nickname
     }
 }

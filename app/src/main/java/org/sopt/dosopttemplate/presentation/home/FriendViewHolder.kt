@@ -12,10 +12,10 @@ class FriendViewHolder(private val binding: ItemFriendBinding) :
             ivProfile.setImageResource(friendData.profileImage)
         else {
             Glide.with(binding.root)
-                .load(friendData.avatar)
+                .load(friendData.reqresData?.avatar)
                 .into(ivProfile)
         }
-        tvName.text = friendData.name
-        tvMusic.text = friendData.music?.string
+        tvName.text = friendData.nickname
+        tvMusic.text = friendData.getMusic()
     }
 }

@@ -15,10 +15,10 @@ class MyPageViewModel : ViewModel() {
     val intro: MutableLiveData<String> = MutableLiveData()
     private fun setMyPage() {
         id = profile.id.toString()
-        nickName.value = profile.name
-        mbti.value = profile.MBTI.toString()
+        nickName.value = profile.nickname
+        mbti.value = profile.getMbti()
         music.value = profile.getMusic()
-        intro.value = profile.intro.toString()
+        intro.value = profile.getIntro()
     }
 
     fun setNewProfileAndSetPage(newProfile: Profile) {

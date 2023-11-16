@@ -66,11 +66,8 @@ class LoginActivity : AppCompatActivity() {
                     override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
                         makeToast(this@LoginActivity, getString(R.string.serverError))
                     }
-
                 })
-
         }
-
     }
 
     private fun processLogin(response: Response<ResponseLoginDto>) {
