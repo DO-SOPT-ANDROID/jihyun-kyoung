@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
-import org.sopt.dosopttemplate.API.ResponseGetFollwerDto
-import org.sopt.dosopttemplate.API.ServicePool
+import org.sopt.dosopttemplate.api.ResponseGetFollwerDto
+import org.sopt.dosopttemplate.api.ServicePool
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.util.ToastMaker

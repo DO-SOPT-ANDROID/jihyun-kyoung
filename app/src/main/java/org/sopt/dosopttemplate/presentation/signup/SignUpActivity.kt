@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import org.sopt.dosopttemplate.API.RequestSignUpDto
-import org.sopt.dosopttemplate.API.ServicePool.authService
+import org.sopt.dosopttemplate.api.RequestSignUpDto
+import org.sopt.dosopttemplate.api.ServicePool.authService
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
 import org.sopt.dosopttemplate.util.ToastMaker.makeToast

@@ -1,7 +1,7 @@
 package org.sopt.dosopttemplate.presentation.home
 
 import androidx.lifecycle.ViewModel
-import org.sopt.dosopttemplate.API.ResponseData
+import org.sopt.dosopttemplate.api.ResponseData
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.Profile
 

@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.API
+package org.sopt.dosopttemplate.api
 
 import retrofit2.Call
 import retrofit2.http.Body

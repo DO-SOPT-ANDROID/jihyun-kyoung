@@ -1,5 +1,6 @@
 package org.sopt.dosopttemplate.presentation.login
 
+import org.sopt.dosopttemplate.api.AuthViewModel
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
@@ -7,9 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import org.sopt.dosopttemplate.API.RequestLoginDto
-import org.sopt.dosopttemplate.API.ResponseLoginDto
-import org.sopt.dosopttemplate.API.ServicePool.authService
+import org.sopt.dosopttemplate.api.ResponseLoginDto
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.SignUpInfo
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
@@ -17,13 +16,13 @@ import org.sopt.dosopttemplate.presentation.home.HomeActivity
 import org.sopt.dosopttemplate.presentation.signup.SingUpActivity
 import org.sopt.dosopttemplate.util.ToastMaker.makeToast
 import org.sopt.dosopttemplate.util.getParcelable
-import retrofit2.Call
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var signUpInfo: SignUpInfo
     private val viewModel by viewModels<LogInViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
         getSignUpInfo()
         login()
         clickSignUpBtn()
+        observeLoginResult()
     }
 
     private fun getSignUpInfo() {
@@ -48,25 +48,31 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        val id = binding.etId.text.toString()
-        val password = binding.etPassword.text.toString()
 
         binding.btLogin.setOnClickListener {
-            authService.login(RequestLoginDto(id, password))
-                .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
-                    override fun onResponse(
-                        call: Call<ResponseLoginDto>,
-                        response: Response<ResponseLoginDto>,
-                    ) {
-                        if (response.isSuccessful) {
-                            processLogin(response)
-                        }
-                    }
+                val id = binding.etId.text.toString()
+                val password = binding.etPassword.text.toString()
 
-                    override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
-                        makeToast(this@LoginActivity, getString(R.string.serverError))
-                    }
-                })
+                authViewModel.login(
+                    id = id,
+                    password = password,
+                )
+
+//            authService.login(RequestLoginDto(id, password))
+//                .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
+//                    override fun onResponse(
+//                        call: Call<ResponseLoginDto>,
+//                        response: Response<ResponseLoginDto>,
+//                    ) {
+//                        if (response.isSuccessful) {
+//                            processLogin(response)
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
+//                        makeToast(this@LoginActivity, getString(R.string.serverError))
+//                    }
+//                })
         }
     }
 
@@ -90,6 +96,23 @@ class LoginActivity : AppCompatActivity() {
         binding.btSignUp.setOnClickListener() {
             val intent = Intent(this, SingUpActivity::class.java)
             resultLauncher.launch(intent)
+        }
+    }
+
+    private fun observeLoginResult() {
+        authViewModel.loginSuccess.observe(this) {
+            // 여기서 it은 loginSucess 객체의 value입니다.
+            if (it) {
+                makeToast(
+                    this@LoginActivity,"로그인 성공"
+                )
+                goToMainPage()
+            } else {
+                makeToast(
+                                    this@LoginActivity,
+                                    "로그인 실패"
+                                )
+            }
         }
     }
 

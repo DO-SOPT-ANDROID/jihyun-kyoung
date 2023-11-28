@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.API
+package org.sopt.dosopttemplate.api
 
 import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
