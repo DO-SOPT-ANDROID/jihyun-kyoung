@@ -4,15 +4,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import org.sopt.dosopttemplate.api.RequestSignUpDto
-import org.sopt.dosopttemplate.api.ServicePool.authService
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.api.AuthViewModel
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
-import org.sopt.dosopttemplate.util.ToastMaker.makeToast
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.sopt.dosopttemplate.util.UtilClass.makeToast
 
 class SingUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
@@ -58,15 +53,15 @@ class SingUpActivity : AppCompatActivity() {
 
     private fun observeSignUpResult() {
         authViewModel.signUpSuccess.observe(this) {
-            if( it ) {
+            if (it) {
                 processSignUp()
-            }
-            else {
+            } else {
                 val errorString = "please check for " + signUpViewModel.getInvalidFormatField()
                 makeToast(this, errorString)
             }
         }
     }
+
     companion object {
         const val SIGNUPINFO = "sign up info"
     }

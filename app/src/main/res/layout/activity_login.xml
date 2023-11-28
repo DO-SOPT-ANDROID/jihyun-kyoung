@@ -48,6 +48,7 @@
             android:hint="@string/id_hint"
             android:inputType="text"
             android:text="@={authViewModel._id}"
+            android:onTextChanged="@{() -> authViewModel.onIDTextChanged()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_id" />
 
@@ -67,6 +68,7 @@
             android:hint="@string/pw_hint"
             android:inputType="textPassword"
             android:text="@={authViewModel._password}"
+            android:onTextChanged="@{() -> authViewModel.onPasswordTextChanged()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_password" />
         <TextView
@@ -98,6 +100,7 @@
             android:layout_marginBottom="40dp"
             android:text="@string/login_btn"
             android:onClick="@{() -> authViewModel.login()}"
+            android:enabled="@{authViewModel.LoginConditionSatisfied? 'true': 'false'}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

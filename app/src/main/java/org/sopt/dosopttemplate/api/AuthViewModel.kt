@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.api.ServicePool.authService
+import org.sopt.dosopttemplate.util.UtilClass.isIdConditionSatisfied
+import org.sopt.dosopttemplate.util.UtilClass.isPasswordConditionSatisfied
 
 class AuthViewModel : ViewModel() {
     // MutableLiveData를 사용하여 login result 객체를 생성합니다.
@@ -23,33 +25,16 @@ class AuthViewModel : ViewModel() {
     val signUpSuccess: MutableLiveData<Boolean> get() = _signUpSuccess
 
     val isLoginButtonClicked: MutableLiveData<Boolean> = MutableLiveData(false)
+    val loginConditionSatisfied: Boolean get() = idConditionSatisfied.value ?: false && passwordConditionSatisfied.value ?: false
+    val idConditionSatisfied: MutableLiveData<Boolean> = MutableLiveData(false)
+    val passwordConditionSatisfied: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val _id: MutableLiveData<String> = MutableLiveData()
-    val id: String get() = _id.value?:""
+    val id: String get() = _id.value ?: ""
     val _password: MutableLiveData<String> = MutableLiveData()
-    val password: String get() = _password.value?:""
+    val password: String get() = _password.value ?: ""
 
     fun login() {
-//        authService.login(RequestLoginDto(id, password))
-//            .enqueue(object : Callback<ResponseLoginDto> {
-//                override fun onResponse(
-//                    call: Call<ResponseLoginDto>,
-//                    response: Response<ResponseLoginDto>,
-//                ) {
-//                    if (response.isSuccessful) {
-//                        _loginResult.value = response.body()
-//                        _loginSuccess.value = true
-//                    } else {
-//                        // TODO: 에러 처리 로직
-//                        _loginSuccess.value = false
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
-//                    // TODO: 에러 처리 로직
-//                }
-//            })
-
         viewModelScope.launch {
             kotlin.runCatching {
                 authService.login(RequestLoginDto(id, password))
@@ -86,5 +71,13 @@ class AuthViewModel : ViewModel() {
 
     fun onLoginButtonClick() {
         isLoginButtonClicked.value = true
+    }
+
+    fun onIDTextChanged() {
+        idConditionSatisfied.value = isIdConditionSatisfied(id)
+    }
+
+    fun onPasswordTextChanged() {
+        passwordConditionSatisfied.value = isPasswordConditionSatisfied(password)
     }
 }
