@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.authViewModel = authViewModel
         getSignUpInfo()
         login()
         clickSignUpBtn()
@@ -54,8 +55,8 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.etPassword.text.toString()
 
             authViewModel.login(
-                id = id,
-                password = password,
+//                id = id,
+//                password = password,
             )
 
 //            authService.login(RequestLoginDto(id, password))

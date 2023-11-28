@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/id_hint"
             android:inputType="text"
-            android:text="@={viewModel.id}"
+            android:text="@={authViewModel._id}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_id" />
 
@@ -66,10 +66,18 @@
             android:layout_height="wrap_content"
             android:hint="@string/pw_hint"
             android:inputType="textPassword"
-            android:text="@={viewModel.password}"
+            android:text="@={authViewModel._password}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_password" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/bt_signUp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="50dp"
+            android:text= "@{authViewModel.isLoginButtonClicked ? `로그인 버튼이 클릭되었습니다.` : `로그인 버튼을 클릭해주세요.`}"
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id='@+id/bt_signUp'
@@ -89,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:text="@string/login_btn"
+            android:onClick="@{() -> authViewModel.login()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

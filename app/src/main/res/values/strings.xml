@@ -39,4 +39,7 @@
 
     <string name = "signUpFail">회원가입 실패.</string>
 
+    <string name = "loginButtonClicked">로그인 버튼이 클릭 되었습니다.</string>
+    <string name = "loginButtonNotClicked">로그인 버튼을 클릭해주세요.</string>
+
 </resources>
