@@ -30,10 +30,7 @@ data class Profile(
     val profileImage: Int?,
     val id: String?,
     var nickname: String,
-//    var music: Music?,
     val type: Int,
-//    var MBTI: String?,
-//    var intro: String?,
     val reqresData: ReqresData?,
     val subInfo: subInfo
 ) : Parcelable {
@@ -61,7 +58,6 @@ data class Profile(
         R.drawable.img_monkey,
         null,
         nickname,
-//        null,
         type,
         null,
         subInfo(null, mbti, intro)
@@ -69,7 +65,7 @@ data class Profile(
 
     constructor(
         profileImage: Int,
-        id : String,
+        id: String,
         nickname: String,
         musicTitle: String,
         musicArtist: String,
@@ -80,10 +76,7 @@ data class Profile(
         profileImage,
         id,
         nickname,
-//        Music(musicTitle, musicArtist),
         type,
-//        MBTI,
-//        intro,
         null,
         subInfo(Music(musicTitle, musicArtist), mbti, intro)
     )
@@ -97,7 +90,6 @@ data class Profile(
         null,
         null,
         nickname,
-//        null,
         FRIEND,
         ReqresData(email, avatar, idInt),
         subInfo(null)
