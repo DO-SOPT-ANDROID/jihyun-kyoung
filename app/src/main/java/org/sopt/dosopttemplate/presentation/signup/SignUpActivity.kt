@@ -19,8 +19,9 @@ class SingUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         binding.lifecycleOwner = this
         binding.viewModel = signUpViewModel
+        binding.authViewModel = authViewModel
         observeSignUpResult()
-        signUp()
+        observeLoginCondition()
     }
 
     private fun clickSignUpBtn() {
@@ -39,8 +40,6 @@ class SingUpActivity : AppCompatActivity() {
             val id = binding.etId.text.toString()
             val password = binding.etPw.text.toString()
             val nickname = binding.etNickName.text.toString()
-            authViewModel.signUp(id, nickname, password)
-
         }
     }
 
@@ -58,6 +57,23 @@ class SingUpActivity : AppCompatActivity() {
             } else {
                 val errorString = "please check for " + signUpViewModel.getInvalidFormatField()
                 makeToast(this, errorString)
+            }
+        }
+    }
+
+    private fun observeLoginCondition() {
+        authViewModel.idConditionSatisfied.observe(this) {
+            if (it) {
+                binding.tilId.error = null
+            } else {
+                binding.tilId.error = "영문, 숫자가 포함된 6~10글자를 입력해주세요."
+            }
+        }
+        authViewModel.passwordConditionSatisfied.observe(this) {
+            if (it) {
+                binding.tilPassword.error = null
+            } else {
+                binding.tilPassword.error = "영문, 숫자, 특수문자가 포함된 6~12글자를 입력해주세요."
             }
         }
     }

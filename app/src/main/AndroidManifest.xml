@@ -15,7 +15,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".presentation.login.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,8 @@
         </activity>
         <activity
             android:name=".presentation.signup.SingUpActivity"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
             android:name=".presentation.home.HomeActivity"
@@ -32,7 +34,8 @@
         </activity>
         <activity
             android:name=".presentation.editMyPage.EditMyPageActivity"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
         </activity>
     </application>
 

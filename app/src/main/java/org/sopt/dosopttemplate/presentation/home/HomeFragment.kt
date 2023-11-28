@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.api.ResponseGetFollwerDto
 import org.sopt.dosopttemplate.api.ServicePool
-import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
-import org.sopt.dosopttemplate.util.ToastMaker
+import org.sopt.dosopttemplate.util.UtilClass.makeToast
 import org.sopt.dosopttemplate.util.binding.BindingFragment
 import retrofit2.Call
 import retrofit2.Callback
@@ -50,7 +50,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
                 override fun onFailure(call: Call<ResponseGetFollwerDto>, t: Throwable) {
                     Log.v("serverError", t.toString())
-                    ToastMaker.makeToast(context as Activity, getString(R.string.serverError))
+                    makeToast(context as Activity, getString(R.string.serverError))
                 }
             })
     }

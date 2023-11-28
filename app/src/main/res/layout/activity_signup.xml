@@ -10,6 +10,10 @@
         <variable
             name="viewModel"
             type="org.sopt.dosopttemplate.presentation.signup.SignUpViewModel" />
+
+        <variable
+            name="authViewModel"
+            type="org.sopt.dosopttemplate.api.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,16 +56,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/et_id"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/id_hint"
-                    android:inputType="text"
-                    android:text="@={viewModel.id}"
-                    android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_id" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_id">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/id_hint"
+                        android:inputType="text"
+                        android:onTextChanged="@{() -> authViewModel.onIDTextChangedForSignUp()}"
+                        android:text="@={authViewModel._id}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_password"
@@ -71,17 +82,25 @@
                     android:text="@string/pw_title"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_id" />
+                    app:layout_constraintTop_toBottomOf="@id/til_id" />
 
-                <EditText
-                    android:id="@+id/et_pw"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/pw_hint"
-                    android:inputType="text"
-                    android:text="@={viewModel.password}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_password" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:id="@+id/et_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/pw_hint"
+                        android:inputType="text"
+                        android:text="@={authViewModel._password}"
+                        android:onClick="@{() -> authViewModel.onPasswordTextChanged()}"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_nickName"
@@ -91,17 +110,23 @@
                     android:text="@string/nickName_title"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_pw" />
+                    app:layout_constraintTop_toBottomOf="@id/til_password" />
 
-                <EditText
-                    android:id="@+id/et_nickName"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_nickName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nickName_hint"
-                    android:inputType="text"
-                    android:text="@={viewModel.nickName}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_nickName" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_nickName">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_nickName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nickName_hint"
+                        android:inputType="text"
+                        android:text="@={authViewModel._nickName}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_mbti"
@@ -111,17 +136,23 @@
                     android:text="@string/mbti_title"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_nickName" />
+                    app:layout_constraintTop_toBottomOf="@id/til_nickName" />
 
-                <EditText
-                    android:id="@+id/et_mbti"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_mbti"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/mbti_hint"
-                    android:inputType="text"
-                    android:text="@={viewModel.mbti}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_mbti">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_mbti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/mbti_hint"
+                        android:inputType="text"
+                        android:text="@={viewModel.mbti}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_intro"
@@ -131,17 +162,23 @@
                     android:text="@string/intro_title"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_mbti" />
+                    app:layout_constraintTop_toBottomOf="@id/til_mbti" />
 
-                <EditText
-                    android:id="@+id/et_intro"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_intro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/intro_hint"
-                    android:inputType="text"
-                    android:text="@={viewModel.intro}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_intro" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_intro">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_intro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/intro_hint"
+                        android:inputType="text"
+                        android:text="@={viewModel.intro}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_music"
@@ -151,18 +188,24 @@
                     android:text="@string/music_title"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_intro" />
+                    app:layout_constraintTop_toBottomOf="@id/til_intro" />
 
-                <EditText
-                    android:id="@+id/et_music"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_music"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/music_hint"
-                    android:inputType="text"
-                    android:text="@={viewModel.music}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_music" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_music">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_music"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/music_hint"
+                        android:inputType="text"
+                        android:text="@={viewModel.music}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_artist"
@@ -172,17 +215,23 @@
                     android:text="@string/artist_title"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_music" />
+                    app:layout_constraintTop_toBottomOf="@id/til_music" />
 
-                <EditText
-                    android:id="@+id/et_artist"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_artist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/artist_hint"
-                    android:inputType="text"
-                    android:text="@={viewModel.artist}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_artist" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_artist">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_artist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/artist_hint"
+                        android:inputType="text"
+                        android:text="@={viewModel.artist}" />
+                </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
@@ -195,6 +244,8 @@
             android:text="@string/signUp_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{() -> authViewModel.signUp()}"
+            android:enabled="@{authViewModel.loginConditionSatisfied}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

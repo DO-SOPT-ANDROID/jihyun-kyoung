@@ -21,7 +21,7 @@ object UtilClass {
     }
 
     fun isPasswordConditionSatisfied(str: String): Boolean {
-        val englishAndNumSpecialRegex: Regex = Regex("^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#\$%^&*()-_=+]).{6,10}\$")
+        val englishAndNumSpecialRegex: Regex = Regex("^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#\$%^&*()-_=+]).{6,12}\$")
         return str.matches(englishAndNumSpecialRegex)
     }
 

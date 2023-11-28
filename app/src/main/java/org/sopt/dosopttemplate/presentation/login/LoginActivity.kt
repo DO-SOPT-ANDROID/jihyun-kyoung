@@ -14,7 +14,7 @@ import org.sopt.dosopttemplate.data.SignUpInfo
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.home.HomeActivity
 import org.sopt.dosopttemplate.presentation.signup.SingUpActivity
-import org.sopt.dosopttemplate.util.ToastMaker.makeToast
+import org.sopt.dosopttemplate.util.UtilClass.makeToast
 import org.sopt.dosopttemplate.util.getParcelable
 import retrofit2.Response
 
@@ -34,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
         login()
         clickSignUpBtn()
         observeLoginResult()
+        observeLoginText()
     }
 
     private fun getSignUpInfo() {
@@ -117,6 +118,26 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun observeLoginText() {
+        authViewModel.idConditionSatisfied.observe(this) {
+            if (it == false) {
+                binding.tilId.error = "영문, 숫자가 포함된 6~10글자를 입력해주세요."
+            } else {
+                binding.tilId.error = null
+            }
+
+        }
+        authViewModel.passwordConditionSatisfied.observe(this) {
+            if (it == false) {
+                binding.tilPassword.error = "영문, 숫자, 특수문자가 포함된 6~12글자를 입력해주세요."
+            } else {
+                binding.tilPassword.error = null
+            }
+
+        }
+    }
+
 
 }
 

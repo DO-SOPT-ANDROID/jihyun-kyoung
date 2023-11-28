@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.DoSoptTemplate" parent="Base.Theme.DoSoptTemplate" />
+    <style name = "ErrorTextAppearance" parent = "Theme.DoSoptTemplate">
+        <item name = "android:textColor">@color/red</item>
+        <item name = "boxStrokeColor">@color/red</item>
+    </style>
+    <style name = "normalTextAppearance" parent = "Theme.DoSoptTemplate">
+        <item name = "android:textColor">@color/red</item>
+        <item name = "boxStrokeColor">@color/red</item>
+    </style>
 </resources>
