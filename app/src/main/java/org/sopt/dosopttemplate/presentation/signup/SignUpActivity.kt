@@ -50,7 +50,6 @@ class SingUpActivity : AppCompatActivity() {
         with(intent) {
             val signUpData = viewModel.createSignUpInfo()
             putExtra(SIGNUPINFO, signUpData)
-            Log.v(SIGNUPINFO, signUpData.password ?: "")
         }
         setResult(RESULT_OK, intent)
         finish()

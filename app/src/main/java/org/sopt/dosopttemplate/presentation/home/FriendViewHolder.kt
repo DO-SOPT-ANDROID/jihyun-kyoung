@@ -9,6 +9,6 @@ class FriendViewHolder(private val binding: ItemFriendBinding) :
     fun onBind(friendData: Profile) = with(binding) {
         ivProfile.setImageResource(friendData.profileImage)
         tvName.text = friendData.name
-        tvMusic.text = friendData.music
+        tvMusic.text = friendData.music?.string
     }
 }

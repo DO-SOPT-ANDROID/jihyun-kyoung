@@ -34,16 +34,18 @@ class LoginActivity : AppCompatActivity() {
         resultLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
-            if (result.resultCode == AppCompatActivity.RESULT_OK) {
+            if (result.resultCode == RESULT_OK) {
                 signUpInfo =
                     result.data?.getParcelable(LogInViewModel.SIGNUPINFO, SignUpInfo::class.java)
                         ?: return@registerForActivityResult
+
             }
         }
     }
 
     private fun clickLoginBtn() {
         binding.btLogin.setOnClickListener() {
+//            Log.v("signUp Info", signUpInfo.id)
             if (viewModel.isLoginAuthorized(signUpInfo)) {
                 makeToast(this, "로그인 성공!")
                 goToMainPage()
@@ -68,8 +70,5 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        const val SIGNUPINFO = "sign up info"
-    }
 }
 

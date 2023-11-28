@@ -9,16 +9,18 @@ import org.sopt.dosopttemplate.R
 data class Profile(
     @DrawableRes
     val profileImage: Int,
-    val name: String,
-    val musicTitle: String?,
-    val musicArtist: String?,
+    var name: String,
+    var musicTitle: String?,
+    var musicArtist: String?,
     val type: Int,
-    val MBTI: String?,
-    val intro: String?,
+    var MBTI: String?,
+    var intro: String?,
     val id: String?
 ) : Parcelable {
-    val music: String = "🎧$musicTitle - $musicArtist"
-
+    var music:Music? = null
+    init {
+        setMusic()
+    }
     constructor(
         @DrawableRes profileImage: Int,
         name: String,
@@ -69,4 +71,14 @@ data class Profile(
         null,
         null
     )
+
+    fun isContainMusic(): Boolean = (music != null)
+    fun getMusic(): String = if (isContainMusic()) music!!.string else "no music"
+
+    fun setMusic() {
+        if (musicArtist != null && musicTitle != null)
+            this.music = Music(musicTitle!!, musicArtist!!)
+        else this.music = null
+
+    }
 }

@@ -89,6 +89,14 @@ class HomeViewModel : ViewModel() {
 
         )
 
+    fun setNewProfile(newProfile: Profile, index: Int) {
+        mockProfileList[index] = newProfile
+    }
+
+    fun getProfile(index: Int): Profile = mockProfileList[index]
+
+    fun getMockProfileLIst() = mockProfileList
+
     companion object {
         const val ME = 1
         const val FRIEND = 0
