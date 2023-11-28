@@ -1,8 +1,8 @@
 package org.sopt.dosopttemplate.presentation.home
 
 import androidx.lifecycle.ViewModel
-import org.sopt.dosopttemplate.api.ResponseData
 import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.api.ResponseData
 import org.sopt.dosopttemplate.data.Profile
 
 class HomeViewModel : ViewModel() {
@@ -40,10 +40,10 @@ class HomeViewModel : ViewModel() {
         mockProfileList.add(profile)
     }
 
-    private fun convertDataToProfile(data: ResponseData): Profile =
-        Profile(getName(data), data.email, data.avatar, data.id)
-
-    private fun getName(data: ResponseData): String = data.firstName + " " + data.lastName
+    private fun convertDataToProfile(data: ResponseData): Profile {
+        val fullName = data.firstName + " " + data.lastName
+        return Profile(fullName, data.email, data.avatar, data.id)
+    }
 
     companion object {
         const val ME = 1
@@ -51,3 +51,5 @@ class HomeViewModel : ViewModel() {
     }
 
 }
+
+

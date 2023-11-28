@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun processLogin(response: Response<ResponseLoginDto>) {
-        val data: ResponseLoginDto = response.body()!!
+        val data: ResponseLoginDto = response.body() ?: error("")
         val userId = data.id
         makeToast(
             this@LoginActivity,
