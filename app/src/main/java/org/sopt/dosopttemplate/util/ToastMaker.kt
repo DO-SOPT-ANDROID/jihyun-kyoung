@@ -2,6 +2,7 @@ package org.sopt.dosopttemplate.util
 
 import android.content.Context
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 
 object ToastMaker {
     private var toast: Toast? = null
@@ -11,3 +12,5 @@ object ToastMaker {
         toast?.show()
     }
 }
+
+fun getMutableDataString(str: MutableLiveData<String>):String = str.value.toString()

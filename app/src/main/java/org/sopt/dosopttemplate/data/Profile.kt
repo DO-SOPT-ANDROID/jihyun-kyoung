@@ -6,79 +6,98 @@ import kotlinx.parcelize.Parcelize
 import org.sopt.dosopttemplate.R
 
 @Parcelize
+data class ReqresData(
+    val email: String,
+    val avatar: String,
+    val idInt: Int
+) : Parcelable
+
+
+@Parcelize
+data class subInfo(
+    var music: Music?,
+    var MBTI: String,
+    var intro: String,
+) : Parcelable {
+    fun getMusic(): String = music?.string ?: "no music"
+
+    constructor(music: Music?) : this(music, "", "")
+}
+
+@Parcelize
 data class Profile(
     @DrawableRes
-    val profileImage: Int,
-    var name: String,
-    var musicTitle: String?,
-    var musicArtist: String?,
+    val profileImage: Int?,
+    val id: String?,
+    var nickname: String,
     val type: Int,
-    var MBTI: String?,
-    var intro: String?,
-    val id: String?
+    val reqresData: ReqresData?,
+    val subInfo: subInfo
 ) : Parcelable {
-    var music:Music? = null
-    init {
-        setMusic()
+    fun getMusic(): String = subInfo.getMusic()
+    fun setMusic(musicTitle: String, musicArtist: String) {
+        subInfo.music = Music(musicTitle, musicArtist)
     }
-    constructor(
-        @DrawableRes profileImage: Int,
-        name: String,
-        musicTitle: String,
-        musicArtist: String,
-        type: Int,
-    ) : this(
-        profileImage,
-        name,
-        musicTitle,
-        musicArtist,
-        type,
-        null,
-        null,
-        null
-    )
+
+    fun getMbti(): String = subInfo.MBTI
+    fun setMbti(mbti: String) {
+        subInfo.MBTI = mbti
+    }
+
+    fun getIntro(): String = subInfo.intro
+    fun setIntro(intro: String) {
+        subInfo.intro = intro
+    }
 
     constructor(
-        name: String,
+        nickname: String,
         type: Int,
-        MBTI: String,
+        mbti: String,
         intro: String
     ) : this(
-        R.drawable.img_noritake,
-        name,
+        R.drawable.img_monkey,
         null,
-        null,
+        nickname,
         type,
-        MBTI,
-        intro,
-        null
+        null,
+        subInfo(null, mbti, intro)
     )
 
     constructor(
         profileImage: Int,
-        name: String,
+        id: String,
+        nickname: String,
         musicTitle: String,
         musicArtist: String,
         type: Int,
-        MBTI: String,
+        mbti: String,
+        intro: String,
     ) : this(
         profileImage,
-        name,
-        musicTitle,
-        musicArtist,
+        id,
+        nickname,
         type,
-        MBTI,
         null,
-        null
+        subInfo(Music(musicTitle, musicArtist), mbti, intro)
     )
 
-    fun isContainMusic(): Boolean = (music != null)
-    fun getMusic(): String = if (isContainMusic()) music!!.string else "no music"
+    constructor(
+        nickname: String,
+        email: String,
+        avatar: String,
+        idInt: Int
+    ) : this(
+        null,
+        null,
+        nickname,
+        FRIEND,
+        ReqresData(email, avatar, idInt),
+        subInfo(null)
+    )
 
-    fun setMusic() {
-        if (musicArtist != null && musicTitle != null)
-            this.music = Music(musicTitle!!, musicArtist!!)
-        else this.music = null
 
+    companion object {
+        const val ME = 1
+        const val FRIEND = 0
     }
 }

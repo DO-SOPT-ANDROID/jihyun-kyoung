@@ -18,13 +18,6 @@ fun <T> Intent.getParcelable(name: String, clazz: Class<T>): T? {
         getParcelableExtra(name)
 }
 
-
-fun logProfile(profile: Profile) {
-    Log.v("nick name", profile.name.toString())
-    Log.v("mbti", profile.MBTI.toString())
-    Log.v("music title", profile.getMusic())
-    Log.v("intro", profile.intro.toString())
-
 fun hideKeyboard(activity:Activity) {
     val imm: InputMethodManager =
         activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

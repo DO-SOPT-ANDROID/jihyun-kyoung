@@ -12,7 +12,7 @@ import org.sopt.dosopttemplate.presentation.home.HomeViewModel
 class EditMyPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditmypageBinding
     private val homeViewModel by viewModels<HomeViewModel>()
-    private val viewModel by viewModels<EditMyPageViewModel>()
+    private val editMyPageViewModel by viewModels<EditMyPageViewModel>()
     private lateinit var myProfile: Profile
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +20,9 @@ class EditMyPageActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_editmypage)
         binding.lifecycleOwner = this
         myProfile = homeViewModel.getProfile(0)
-        binding.viewModel = viewModel
-        viewModel.setProfile(myProfile)
-        viewModel.initPage()
+        binding.viewModel = editMyPageViewModel
+        editMyPageViewModel.setProfile(myProfile)
+        editMyPageViewModel.initPage()
         clickFinishButton()
     }
 
@@ -34,7 +34,7 @@ class EditMyPageActivity : AppCompatActivity() {
     }
 
     private fun setNewProfile() {
-        myProfile = viewModel.setNewProfile()
+        myProfile = editMyPageViewModel.setNewProfile()
     }
 
     private fun getNewProfileAndParseIntent() {
