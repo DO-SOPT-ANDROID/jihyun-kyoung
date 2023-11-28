@@ -37,6 +37,7 @@
     <string name = "end">입니다.</string>
     <string name="serverError">서버 에러 발생</string>
 
+    <string name = "signUpSuccess">회원가입 성공!</string>
     <string name = "signUpFail">회원가입 실패.</string>
 
     <string name = "loginButtonClicked">로그인 버튼이 클릭 되었습니다.</string>

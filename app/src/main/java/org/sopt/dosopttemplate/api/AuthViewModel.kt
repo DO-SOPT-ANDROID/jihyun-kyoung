@@ -80,12 +80,7 @@ class AuthViewModel : ViewModel() {
         idConditionSatisfied.value = isIdConditionSatisfied(id)
         loginConditionSatisfied.value = idConditionSatisfied.value?:false && passwordConditionSatisfied.value?:false
     }
-    fun onIDTextChangedForSignUp() {
-        idConditionSatisfied.value = isIdConditionSatisfied(id)
-        loginConditionSatisfied.value = idConditionSatisfied.value?:false && passwordConditionSatisfied.value?:false
-        Log.v("id", id.toString())
-        Log.v("id condition", idConditionSatisfied.value.toString())
-    }
+
     fun onPasswordTextChanged() {
         passwordConditionSatisfied.value = isPasswordConditionSatisfied(password)
         loginConditionSatisfied.value = idConditionSatisfied.value?:false && passwordConditionSatisfied.value?:false

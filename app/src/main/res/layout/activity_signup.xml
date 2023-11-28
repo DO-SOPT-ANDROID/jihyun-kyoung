@@ -8,7 +8,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
+            name="signUpViewModel"
             type="org.sopt.dosopttemplate.presentation.signup.SignUpViewModel" />
 
         <variable
@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/id_hint"
                         android:inputType="text"
-                        android:onTextChanged="@{() -> authViewModel.onIDTextChangedForSignUp()}"
+                        android:onTextChanged="@{() -> authViewModel.onIDTextChanged()}"
                         android:text="@={authViewModel._id}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -98,8 +98,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/pw_hint"
                         android:inputType="text"
-                        android:text="@={authViewModel._password}"
-                        android:onClick="@{() -> authViewModel.onPasswordTextChanged()}"/>
+                        android:onTextChanged="@{() -> authViewModel.onPasswordTextChanged()}"
+                        android:text="@={authViewModel._password}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -151,7 +151,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/mbti_hint"
                         android:inputType="text"
-                        android:text="@={viewModel.mbti}" />
+                        android:text="@={signUpViewModel.mbti}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -177,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/intro_hint"
                         android:inputType="text"
-                        android:text="@={viewModel.intro}" />
+                        android:text="@={signUpViewModel.intro}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -203,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/music_hint"
                         android:inputType="text"
-                        android:text="@={viewModel.music}" />
+                        android:text="@={signUpViewModel.music}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -230,7 +230,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/artist_hint"
                         android:inputType="text"
-                        android:text="@={viewModel.artist}" />
+                        android:text="@={signUpViewModel.artist}" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
@@ -241,11 +241,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:enabled="@{authViewModel.loginConditionSatisfied}"
+            android:onClick="@{() -> authViewModel.signUp()}"
             android:text="@string/signUp_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{() -> authViewModel.signUp()}"
-            android:enabled="@{authViewModel.loginConditionSatisfied}"/>
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

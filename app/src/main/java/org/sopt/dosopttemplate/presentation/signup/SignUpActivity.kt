@@ -11,43 +11,23 @@ import org.sopt.dosopttemplate.util.UtilClass.makeToast
 
 class SingUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
-    private val signUpViewModel by viewModels<SignUpViewModel>()
     private val authViewModel by viewModels<AuthViewModel>()
+    private val signUpViewModel by viewModels<SignUpViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         binding.lifecycleOwner = this
-        binding.viewModel = signUpViewModel
+        binding.signUpViewModel = signUpViewModel
         binding.authViewModel = authViewModel
         observeSignUpResult()
         observeLoginCondition()
     }
 
-    private fun clickSignUpBtn() {
-        binding.btSignUp.setOnClickListener() {
-            if (signUpViewModel.isConditionSatisfied())
-                processSignUp()
-            else {
-                val errorString = "please check for " + signUpViewModel.getInvalidFormatField()
-                makeToast(this, errorString)
-            }
-        }
-    }
-
-    private fun signUp() {
-        binding.btSignUp.setOnClickListener() {
-            val id = binding.etId.text.toString()
-            val password = binding.etPw.text.toString()
-            val nickname = binding.etNickName.text.toString()
-        }
-    }
-
     private fun processSignUp() {
-        makeToast(this, "회원가입 완료!")
+        makeToast(this, getString(R.string.signUpSuccess))
         setResult(RESULT_OK, intent)
         finish()
-//      TODO:  saveSignUpData()
     }
 
     private fun observeSignUpResult() {
@@ -55,31 +35,27 @@ class SingUpActivity : AppCompatActivity() {
             if (it) {
                 processSignUp()
             } else {
-                val errorString = "please check for " + signUpViewModel.getInvalidFormatField()
-                makeToast(this, errorString)
+                makeToast(this, getString(R.string.signUpFail))
             }
         }
     }
 
     private fun observeLoginCondition() {
         authViewModel.idConditionSatisfied.observe(this) {
-            if (it) {
-                binding.tilId.error = null
-            } else {
+            if(it == false && authViewModel.id.isNotBlank()){
                 binding.tilId.error = "영문, 숫자가 포함된 6~10글자를 입력해주세요."
+            }
+            else {
+                binding.tilId.error = null
             }
         }
         authViewModel.passwordConditionSatisfied.observe(this) {
-            if (it) {
-                binding.tilPassword.error = null
-            } else {
+            if (it == false && authViewModel.id.isNotBlank()) {
                 binding.tilPassword.error = "영문, 숫자, 특수문자가 포함된 6~12글자를 입력해주세요."
+            } else {
+                binding.tilPassword.error = null
             }
         }
-    }
-
-    companion object {
-        const val SIGNUPINFO = "sign up info"
     }
 
 

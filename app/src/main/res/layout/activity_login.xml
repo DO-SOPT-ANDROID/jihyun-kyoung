@@ -47,8 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_id"
-             >
+            app:layout_constraintTop_toBottomOf="@id/tv_id">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_id"
@@ -76,54 +75,44 @@
             android:id="@+id/til_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:errorEnabled="@{authViewModel.passwordConditionSatisfied == false? true: false}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_password"
-            app:errorEnabled="@{authViewModel.passwordConditionSatisfied == false? true: false}">
+            app:layout_constraintTop_toBottomOf="@id/tv_password">
 
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pw_hint"
+                android:inputType="textPassword"
+                android:onTextChanged="@{() -> authViewModel.onPasswordTextChanged()}"
+                android:text="@={authViewModel._password}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id='@+id/bt_signUp'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:paddingLeft="0dp"
+            android:text="@string/signUp_btn"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@id/bt_login"
+            app:layout_constraintStart_toStartOf="@id/bt_login" />
+
+        <Button
+            android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/pw_hint"
-            android:inputType="textPassword"
-            android:onTextChanged="@{() -> authViewModel.onPasswordTextChanged()}"
-            android:text="@={authViewModel._password}"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="@{authViewModel.isLoginButtonClicked ? `로그인 버튼이 클릭되었습니다.` : `로그인 버튼을 클릭해주세요.`}"
-        app:layout_constraintBottom_toTopOf="@id/bt_signUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id='@+id/bt_signUp'
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:paddingLeft="0dp"
-        android:text="@string/signUp_btn"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@id/bt_login"
-        app:layout_constraintStart_toStartOf="@id/bt_login" />
-
-    <Button
-        android:id="@+id/bt_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:enabled="@{authViewModel.loginConditionSatisfied}"
-        android:onClick="@{() -> authViewModel.login()}"
-        android:text="@string/login_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        />
-</androidx.constraintlayout.widget.ConstraintLayout></layout>
+            android:layout_marginBottom="40dp"
+            android:enabled="@{authViewModel.loginConditionSatisfied}"
+            android:onClick="@{() -> authViewModel.login()}"
+            android:text="@string/login_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
