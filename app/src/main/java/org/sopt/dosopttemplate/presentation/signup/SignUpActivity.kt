@@ -12,6 +12,7 @@ import org.sopt.dosopttemplate.util.ToastMaker.makeToast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import org.sopt.dosopttemplate.util.hideKeyboard
 
 class SingUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
@@ -22,8 +23,15 @@ class SingUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        hideKeyboardOnClickScreen()
         clickSignUpBtn()
         signUp()
+    }
+
+    private fun hideKeyboardOnClickScreen() {
+        binding.root.setOnClickListener {
+            hideKeyboard(this)
+        }
     }
 
     private fun clickSignUpBtn() {

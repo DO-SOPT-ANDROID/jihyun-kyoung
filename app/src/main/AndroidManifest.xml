@@ -29,9 +29,22 @@
         <activity
             android:name=".presentation.home.HomeActivity"
             android:exported="false">
+            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.editMyPage.EditMyPageActivity"
+            android:name=".presentation.signup.SingUpActivity"
+            android:exported="false"
+            ></activity>
+        <activity
+            android:name=".presentation.home.HomeActivity"
             android:exported="false">
         </activity>
     </application>
