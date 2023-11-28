@@ -43,7 +43,7 @@ class HomeViewModel : ViewModel() {
     private fun convertDataToProfile(data: ResponseData): Profile =
         Profile(getName(data), data.email, data.avatar, data.id)
 
-    private fun getName(data: ResponseData): String = data.first_name + " " + data.last_name
+    private fun getName(data: ResponseData): String = data.firstName + " " + data.lastName
 
     companion object {
         const val ME = 1

@@ -10,9 +10,9 @@ data class ResponseData(
     @SerialName("email")
     val email: String,
     @SerialName("first_name")
-    val first_name: String,
+    val firstName: String,
     @SerialName("last_name")
-    val last_name: String,
+    val lastName: String,
     @SerialName("avatar")
     val avatar: String,
 )
@@ -30,11 +30,11 @@ data class ResponseGetFollwerDto(
     @SerialName("page")
     val page: Int,
     @SerialName("per_page")
-    val per_page: Int,
+    val perPage: Int,
     @SerialName("total")
     val total: Int,
     @SerialName("total_pages")
-    val total_pages: Int,
+    val totalPages: Int,
     @SerialName("data")
     val data: List<ResponseData>,
     @SerialName("support")
