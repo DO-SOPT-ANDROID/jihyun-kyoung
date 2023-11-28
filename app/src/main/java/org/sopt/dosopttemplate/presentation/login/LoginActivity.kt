@@ -1,6 +1,5 @@
 package org.sopt.dosopttemplate.presentation.login
 
-import org.sopt.dosopttemplate.api.AuthViewModel
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
@@ -8,8 +7,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import org.sopt.dosopttemplate.api.ResponseLoginDto
 import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.api.AuthViewModel
+import org.sopt.dosopttemplate.api.ResponseLoginDto
 import org.sopt.dosopttemplate.data.SignUpInfo
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.home.HomeActivity
@@ -50,13 +50,13 @@ class LoginActivity : AppCompatActivity() {
     private fun login() {
 
         binding.btLogin.setOnClickListener {
-                val id = binding.etId.text.toString()
-                val password = binding.etPassword.text.toString()
+            val id = binding.etId.text.toString()
+            val password = binding.etPassword.text.toString()
 
-                authViewModel.login(
-                    id = id,
-                    password = password,
-                )
+            authViewModel.login(
+                id = id,
+                password = password,
+            )
 
 //            authService.login(RequestLoginDto(id, password))
 //                .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
@@ -77,7 +77,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun processLogin(response: Response<ResponseLoginDto>) {
-        val data: ResponseLoginDto = response.body() ?: error("")
+        val data: ResponseLoginDto =
+            requireNotNull(response.body()) { "Response body should not be null" }
         val userId = data.id
         makeToast(
             this@LoginActivity,
@@ -104,14 +105,14 @@ class LoginActivity : AppCompatActivity() {
             // 여기서 it은 loginSucess 객체의 value입니다.
             if (it) {
                 makeToast(
-                    this@LoginActivity,"로그인 성공"
+                    this@LoginActivity, "로그인 성공"
                 )
                 goToMainPage()
             } else {
                 makeToast(
-                                    this@LoginActivity,
-                                    "로그인 실패"
-                                )
+                    this@LoginActivity,
+                    "로그인 실패"
+                )
             }
         }
     }
