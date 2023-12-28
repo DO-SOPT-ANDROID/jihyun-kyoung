@@ -5,20 +5,21 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.api.ServicePool.authService
 import org.sopt.dosopttemplate.util.UtilClass.isIdConditionSatisfied
 import org.sopt.dosopttemplate.util.UtilClass.isPasswordConditionSatisfied
 
+sealed class LoginState {
+    object Loading : LoginState()
+    data class Success(val data: ResponseLoginDto) : LoginState()
+    object Error : LoginState()
+}
+
 class AuthViewModel : ViewModel() {
-    // MutableLiveData를 사용하여 login result 객체를 생성합니다.
-
-    private val _loginResult: MutableLiveData<ResponseLoginDto> = MutableLiveData()
-    val loginResult: MutableLiveData<ResponseLoginDto> get() = _loginResult
-
-    private val _loginSuccess: MutableLiveData<Boolean> = MutableLiveData()
-    val loginSuccess: MutableLiveData<Boolean> get() = _loginSuccess
-
+    private val _loginState: MutableStateFlow<LoginState> = MutableStateFlow(LoginState.Loading)
+    private val loginState: MutableStateFlow<LoginState> get() = _loginState
     private val _signUpResult: MutableLiveData<Unit> = MutableLiveData()
     val signUpResult: MutableLiveData<Unit> get() = _signUpResult
 
@@ -28,7 +29,8 @@ class AuthViewModel : ViewModel() {
     val isLoginButtonClicked: MutableLiveData<Boolean> = MutableLiveData(false)
     val idConditionSatisfied: MutableLiveData<Boolean> = MutableLiveData(false)
     val passwordConditionSatisfied: MutableLiveData<Boolean> = MutableLiveData(false)
-    val loginConditionSatisfied: MutableLiveData<Boolean> = MutableLiveData(idConditionSatisfied.value?:false && passwordConditionSatisfied.value?:false)
+    val loginConditionSatisfied: MutableLiveData<Boolean> =
+        MutableLiveData(idConditionSatisfied.value ?: false && passwordConditionSatisfied.value ?: false)
 
     val _id: MutableLiveData<String> = MutableLiveData()
     val id: String get() = _id.value ?: ""
@@ -42,14 +44,13 @@ class AuthViewModel : ViewModel() {
             kotlin.runCatching {
                 authService.login(RequestLoginDto(id, password))
             }.onSuccess {
-                if (it.isSuccessful) {
-                    loginResult.value = it.body()
-                    loginSuccess.value = true
+                if (it.isSuccessful && it.body() != null ) {
+                    _loginState.value = LoginState.Success(it.body())
                 } else {
-                    loginSuccess.value = false
+                    _loginSuccess.value = false
                 }
             }.onFailure {
-                // 에러 처리
+                _loginSuccess.value = false
             }
         }
     }
@@ -60,13 +61,13 @@ class AuthViewModel : ViewModel() {
                 authService.signUp(RequestSignUpDto(id, nickName, password))
             }.onSuccess {
                 if (it.isSuccessful) {
-                    signUpResult.value = it.body()
-                    signUpSuccess.value = true
+                    _signUpResult.value = it.body()
+                    _signUpSuccess.value = true
                 } else {
-                    signUpSuccess.value = false
+                    _signUpSuccess.value = false
                 }
             }.onFailure {
-                // 에러 처리
+                _signUpSuccess.value = false
             }
         }
     }
@@ -78,12 +79,14 @@ class AuthViewModel : ViewModel() {
 
     fun onIDTextChanged() {
         idConditionSatisfied.value = isIdConditionSatisfied(id)
-        loginConditionSatisfied.value = idConditionSatisfied.value?:false && passwordConditionSatisfied.value?:false
+        loginConditionSatisfied.value =
+            idConditionSatisfied.value ?: false && passwordConditionSatisfied.value ?: false
     }
 
     fun onPasswordTextChanged() {
         passwordConditionSatisfied.value = isPasswordConditionSatisfied(password)
-        loginConditionSatisfied.value = idConditionSatisfied.value?:false && passwordConditionSatisfied.value?:false
+        loginConditionSatisfied.value =
+            idConditionSatisfied.value ?: false && passwordConditionSatisfied.value ?: false
         Log.v("logincondition", loginConditionSatisfied.value.toString())
     }
 }

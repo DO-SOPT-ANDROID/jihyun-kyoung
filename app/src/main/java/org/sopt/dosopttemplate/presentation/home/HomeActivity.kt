@@ -22,7 +22,6 @@ class HomeActivity : AppCompatActivity() {
         initializeHomeFragment()
         initializeBottomNavigation()
         clickBottomNavigation()
-
     }
 
     private fun initializeBinding() {
