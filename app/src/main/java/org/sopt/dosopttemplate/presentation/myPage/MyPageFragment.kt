@@ -9,8 +9,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.domain.model.Profile
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
+import org.sopt.dosopttemplate.domain.model.Profile
 import org.sopt.dosopttemplate.presentation.editMyPage.EditMyPageActivity
 import org.sopt.dosopttemplate.presentation.editMyPage.EditMyPageViewModel
 import org.sopt.dosopttemplate.presentation.home.HomeViewModel
@@ -33,16 +33,10 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = myPageViewModel
-        binding.lifecycleOwner = this
-//        setProfile()
-        myPageViewModel.setNewProfileAndSetPage(profile)
+        myPageViewModel.setNewProfileAndSetPage(homeViewModel.myProfile[0])
         clickFABEdit()
         setNewProfile()
     }
-
-//    private fun setProfile() {
-//        profile = homeViewModel.getProfile(0)
-//    }
 
     private fun clickFABEdit() {
         binding.FABEdit.setOnClickListener() {

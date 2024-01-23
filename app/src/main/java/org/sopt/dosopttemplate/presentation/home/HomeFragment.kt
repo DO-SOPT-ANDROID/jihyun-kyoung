@@ -1,27 +1,15 @@
 package org.sopt.dosopttemplate.presentation.home
 
-import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import androidx.fragment.app.activityViewModels
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.api.FollowerService
-import org.sopt.dosopttemplate.data.model.ResponseGetFollowerDto
-import org.sopt.dosopttemplate.api.ServicePool
-import org.sopt.dosopttemplate.data.model.toProfile
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.util.UtilClass.makeToast
 import org.sopt.dosopttemplate.util.binding.BindingFragment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val viewModel by viewModels<HomeViewModel>()
+    private val viewModel by activityViewModels<HomeViewModel>()
     private var _profileAdapter: ProfileAdapter? = null
     val profileAdapter: ProfileAdapter
         get() = requireNotNull(_profileAdapter) { "profileAdapter not initialized" }
@@ -36,35 +24,21 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _profileAdapter = ProfileAdapter(requireContext())
-        binding.lifecycleOwner = this
         binding.rvProfiles.adapter = profileAdapter
-        getFollowerList()
+        viewModel.getAndSetFollower()
+        initFollowersObserver()
     }
 
-    private fun getFollowerList() {
-        viewModel.getAndSetFollowerList()
-//        ServicePool.followerService.getFollowerList()
-//            .enqueue(object : Callback<ResponseGetFollowerDto> {
-//                override fun onResponse(
-//                    call: Call<ResponseGetFollowerDto>,
-//                    response: Response<ResponseGetFollowerDto>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        setProfileListFromResponse(response)
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ResponseGetFollowerDto>, t: Throwable) {
-//                    Log.v("serverError", t.toString())
-//                    makeToast(context as Activity, getString(R.string.serverError))
-//                }
-//            })
-    }
+    private fun initFollowersObserver() {
+        viewModel.getFollowerState.observe(viewLifecycleOwner) {
+            when (it) {
+                is GetFollowerState.Success -> {
+                    profileAdapter.setProfileList(it.data)
+                }
 
-//    private fun setProfileListFromResponse() {
-//        val responseBody = response.body()
-//        val data = responseBody?.data
-//        viewModel.initResponseDataList(data)
-//        profileAdapter.setProfileList(viewModel.getMockProfileLIst())
-//    }
+                is GetFollowerState.Loading -> makeToast(requireContext(), "로딩중")
+                is GetFollowerState.Error -> makeToast(requireContext(), "follower를 불러오기에 실패하였습니다.")
+            }
+        }
+    }
 }
