@@ -43,6 +43,6 @@ data class Follower(
     val avatar: String,
 )
 
-fun Follower.toProfile() {
-    return Profile()
+fun Follower.toProfile() :Profile{
+    return Profile(avatar = this.avatar, email = this.email, intId = this.id, nickname = this.firstName, type = Profile.FRIEND,id =  this.firstName+ " " + this.lastName, )
 }

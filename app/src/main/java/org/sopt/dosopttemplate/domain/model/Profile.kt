@@ -16,16 +16,18 @@ data class ReqresData(
 data class Profile(
     @DrawableRes
     val profileImage: Int = R.drawable.img_monkey,
-    val id: String?,
-    val intId: Int,
+    val id: String? = "unknown",
+    val intId: Int?=null,
     var nickname: String,
     val type: Int,
-    val music: Music = Music("default music", "no artist"),
+    val musicTitle: String = "default musci",
+    val musicArtist: String = "no artist",
     val MBTI: MBTI = org.sopt.dosopttemplate.domain.model.MBTI.INTJ,
     val intro: String = "",
-    val email: String?,
-    val avatar: String?,
+    val email: String?=null,
+    val avatar: String?=null,
 ) : Parcelable {
+    val music: String = Music(musicTitle, musicArtist).toString()
 
     companion object {
         const val ME = 1
@@ -49,5 +51,11 @@ enum class MBTI(val type: String) {
     ISFJ("isfj"),
     ISFP("isfp"),
     ISTJ("istj"),
-    ISTP("istp")
+    ISTP("istp");
+
+    companion object {
+        fun getByType(type: String): MBTI {
+            return values().find { it.type == type }?:MBTI.INTJ
+        }
+    }
 }

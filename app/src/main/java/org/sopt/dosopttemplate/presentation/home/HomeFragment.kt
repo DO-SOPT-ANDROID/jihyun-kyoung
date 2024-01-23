@@ -12,6 +12,7 @@ import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.api.FollowerService
 import org.sopt.dosopttemplate.data.model.ResponseGetFollowerDto
 import org.sopt.dosopttemplate.api.ServicePool
+import org.sopt.dosopttemplate.data.model.toProfile
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.util.UtilClass.makeToast
 import org.sopt.dosopttemplate.util.binding.BindingFragment
@@ -41,13 +42,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun getFollowerList() {
-        lifecycleScope.launch {
-            kotlin.runCatching{
-                ServicePool.followerService.getFollowerList()
-            }.onSuccess {
-                profileAdapter.setProfileList(it.body()?.data.to)
-            }
-        }
+        viewModel.getAndSetFollowerList()
 //        ServicePool.followerService.getFollowerList()
 //            .enqueue(object : Callback<ResponseGetFollowerDto> {
 //                override fun onResponse(
@@ -66,10 +61,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 //            })
     }
 
-    private fun setProfileListFromResponse(response: Response<ResponseGetFollowerDto>) {
-        val responseBody = response.body()
-        val data = responseBody?.data
-        viewModel.initResponseDataList(data)
-        profileAdapter.setProfileList(viewModel.getMockProfileLIst())
-    }
+//    private fun setProfileListFromResponse() {
+//        val responseBody = response.body()
+//        val data = responseBody?.data
+//        viewModel.initResponseDataList(data)
+//        profileAdapter.setProfileList(viewModel.getMockProfileLIst())
+//    }
 }

@@ -11,7 +11,7 @@ import org.sopt.dosopttemplate.presentation.home.HomeViewModel
 
 class EditMyPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditmypageBinding
-    private val homeViewModel by viewModels<HomeViewModel>()
+//    private val homeViewModel by viewModels<HomeViewModel>()
     private val editMyPageViewModel by viewModels<EditMyPageViewModel>()
     private lateinit var myProfile: Profile
 
@@ -19,7 +19,7 @@ class EditMyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_editmypage)
         binding.lifecycleOwner = this
-        myProfile = homeViewModel.getProfile(0)
+//        myProfile = homeViewModel.getProfile(0)
         binding.viewModel = editMyPageViewModel
         editMyPageViewModel.setProfile(myProfile)
         editMyPageViewModel.initPage()

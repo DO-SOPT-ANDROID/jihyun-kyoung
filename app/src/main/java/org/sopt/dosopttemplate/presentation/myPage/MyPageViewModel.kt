@@ -16,9 +16,9 @@ class MyPageViewModel : ViewModel() {
     private fun setMyPage() {
         id = profile.id.toString()
         nickName.value = profile.nickname
-        mbti.value = profile.getMbti()
-        music.value = profile.getMusic()
-        intro.value = profile.getIntro()
+        mbti.value = profile.MBTI.toString()
+        music.value = profile.music
+        intro.value = profile.intro
     }
 
     fun setNewProfileAndSetPage(newProfile: Profile) {

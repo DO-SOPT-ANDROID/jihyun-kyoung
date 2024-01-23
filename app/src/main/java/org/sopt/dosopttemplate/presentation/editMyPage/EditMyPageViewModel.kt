@@ -2,6 +2,8 @@ package org.sopt.dosopttemplate.presentation.editMyPage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.sopt.dosopttemplate.domain.model.MBTI
+import org.sopt.dosopttemplate.domain.model.Music
 import org.sopt.dosopttemplate.domain.model.Profile
 
 class EditMyPageViewModel : ViewModel() {
@@ -14,13 +16,13 @@ class EditMyPageViewModel : ViewModel() {
     val id: MutableLiveData<String> = MutableLiveData()
 
     fun setNewProfile(): Profile {
-        if (!(mbti.value.isNullOrEmpty())) profile.setMbti(mbti.value.toString())
+        if (!(mbti.value.isNullOrEmpty())) profile = profile.copy(MBTI = MBTI.getByType(mbti.value.toString()))
         if (!(musicTitle.value.isNullOrEmpty()) && !(musicArtist.value.isNullOrEmpty()))
-            profile.setMusic(musicTitle.value.toString(), musicArtist.value.toString())
-        if (!(intro.value.isNullOrEmpty())) profile.setIntro(intro.value.toString())
+            profile = profile.copy(musicTitle = musicTitle.value.toString(), musicArtist = musicArtist.value.toString())
+        if (!(intro.value.isNullOrEmpty())) profile = profile.copy(intro = intro.value.toString())
+
         return profile
     }
-
     fun setProfile(profile: Profile) {
         this.profile = profile
     }

@@ -34,15 +34,15 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = myPageViewModel
         binding.lifecycleOwner = this
-        setProfile()
+//        setProfile()
         myPageViewModel.setNewProfileAndSetPage(profile)
         clickFABEdit()
         setNewProfile()
     }
 
-    private fun setProfile() {
-        profile = homeViewModel.getProfile(0)
-    }
+//    private fun setProfile() {
+//        profile = homeViewModel.getProfile(0)
+//    }
 
     private fun clickFABEdit() {
         binding.FABEdit.setOnClickListener() {
