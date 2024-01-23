@@ -1,11 +1,11 @@
-package org.sopt.dosopttemplate.presentation.signup
+package org.sopt.dosopttemplate.presentation.auth.signup
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.api.AuthViewModel
+import org.sopt.dosopttemplate.presentation.auth.AuthViewModel
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
 import org.sopt.dosopttemplate.util.UtilClass.makeToast
 

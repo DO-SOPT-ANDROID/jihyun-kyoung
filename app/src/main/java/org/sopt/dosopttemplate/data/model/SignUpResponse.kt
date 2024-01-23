@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.api
+package org.sopt.dosopttemplate.data.model
 
 sealed class SignupResponse {
     data class ResponseSignUpDto(

@@ -1,6 +1,8 @@
 package org.sopt.dosopttemplate.api
 
-import retrofit2.Call
+import org.sopt.dosopttemplate.data.model.RequestLoginDto
+import org.sopt.dosopttemplate.data.model.RequestSignUpDto
+import org.sopt.dosopttemplate.data.model.ResponseLoginDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST

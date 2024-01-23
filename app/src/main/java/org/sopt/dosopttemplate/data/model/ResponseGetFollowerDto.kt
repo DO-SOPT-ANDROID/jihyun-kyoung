@@ -1,7 +1,6 @@
-package org.sopt.dosopttemplate.api
+package org.sopt.dosopttemplate.data.model
 
 import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 @Serializable
 data class ResponseGetFollwerDto(

@@ -1,7 +1,7 @@
 package org.sopt.dosopttemplate.presentation.home
 
 import androidx.recyclerview.widget.RecyclerView
-import org.sopt.dosopttemplate.data.Profile
+import org.sopt.dosopttemplate.domain.model.Profile
 import org.sopt.dosopttemplate.databinding.ItemMyprofileBinding
 
 class MyProfileViewHolder(private val binding: ItemMyprofileBinding) :

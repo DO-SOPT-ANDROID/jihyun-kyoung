@@ -11,7 +11,7 @@
 
         <variable
             name="profile"
-            type="org.sopt.dosopttemplate.data.Profile" />
+            type="org.sopt.dosopttemplate.domain.model.Profile" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"

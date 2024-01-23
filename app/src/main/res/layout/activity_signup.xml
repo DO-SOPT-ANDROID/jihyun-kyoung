@@ -9,18 +9,18 @@
 
         <variable
             name="signUpViewModel"
-            type="org.sopt.dosopttemplate.presentation.signup.SignUpViewModel" />
+            type="org.sopt.dosopttemplate.presentation.auth.signup.SignUpViewModel" />
 
         <variable
             name="authViewModel"
-            type="org.sopt.dosopttemplate.api.AuthViewModel" />
+            type="org.sopt.dosopttemplate.presentation.auth.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"
-        tools:context=".presentation.signup.SingUpActivity">
+        tools:context=".presentation.auth.signup.SingUpActivity">
 
         <TextView
             android:id="@+id/tv_signup"

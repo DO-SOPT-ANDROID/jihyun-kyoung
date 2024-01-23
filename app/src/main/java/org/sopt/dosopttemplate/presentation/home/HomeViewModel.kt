@@ -2,8 +2,8 @@ package org.sopt.dosopttemplate.presentation.home
 
 import androidx.lifecycle.ViewModel
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.api.ResponseData
-import org.sopt.dosopttemplate.data.Profile
+import org.sopt.dosopttemplate.data.model.ResponseData
+import org.sopt.dosopttemplate.domain.model.Profile
 
 class HomeViewModel : ViewModel() {
     val mockProfileList = mutableListOf<Profile>(

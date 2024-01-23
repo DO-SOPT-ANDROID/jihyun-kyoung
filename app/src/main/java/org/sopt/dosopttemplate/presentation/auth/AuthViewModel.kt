@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.api// 보시면 알겠지만 LiveData는 lifecycle 라이브러리에 들어있습니다!
+package org.sopt.dosopttemplate.presentation.auth// 보시면 알겠지만 LiveData는 lifecycle 라이브러리에 들어있습니다!
 // 서비스 객체를 따로 만들지 않고 바로 불러왔습니다.
 // 언제나 그렇듯 Call과 Callback은 Retrofit2의 것을 사용해야 합니다. okhttp 아님 주의!
 import android.util.Log
@@ -8,6 +8,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.api.ServicePool.authService
+import org.sopt.dosopttemplate.data.model.RequestLoginDto
+import org.sopt.dosopttemplate.data.model.RequestSignUpDto
+import org.sopt.dosopttemplate.data.model.ResponseLoginDto
 import org.sopt.dosopttemplate.util.UtilClass.isIdConditionSatisfied
 import org.sopt.dosopttemplate.util.UtilClass.isPasswordConditionSatisfied
 

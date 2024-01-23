@@ -9,7 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.data.Profile
+import org.sopt.dosopttemplate.domain.model.Profile
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
 import org.sopt.dosopttemplate.presentation.editMyPage.EditMyPageActivity
 import org.sopt.dosopttemplate.presentation.editMyPage.EditMyPageViewModel

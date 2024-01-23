@@ -2,7 +2,7 @@ package org.sopt.dosopttemplate.presentation.myPage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.dosopttemplate.data.Profile
+import org.sopt.dosopttemplate.domain.model.Profile
 
 class MyPageViewModel : ViewModel() {
     private lateinit var profile: Profile

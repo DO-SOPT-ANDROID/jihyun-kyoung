@@ -1,8 +1,8 @@
-package org.sopt.dosopttemplate.presentation.signup
+package org.sopt.dosopttemplate.presentation.auth.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.dosopttemplate.data.Profile
+import org.sopt.dosopttemplate.domain.model.Profile
 
 class SignUpViewModel : ViewModel() {
     lateinit var profile: Profile

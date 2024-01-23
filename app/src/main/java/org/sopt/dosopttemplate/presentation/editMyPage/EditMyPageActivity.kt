@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.data.Profile
+import org.sopt.dosopttemplate.domain.model.Profile
 import org.sopt.dosopttemplate.databinding.ActivityEditmypageBinding
 import org.sopt.dosopttemplate.presentation.home.HomeViewModel
 
