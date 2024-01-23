@@ -8,6 +8,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import org.sopt.dosopttemplate.BuildConfig
 
 object ApiFactory {
     lateinit var url: String

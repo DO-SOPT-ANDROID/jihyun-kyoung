@@ -1,9 +1,12 @@
 package org.sopt.dosopttemplate.data.model
 
+
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import org.sopt.dosopttemplate.domain.model.Profile
 
 @Serializable
-data class ResponseGetFollwerDto(
+data class ResponseGetFollowerDto(
     @SerialName("page")
     val page: Int,
     @SerialName("per_page")
@@ -13,7 +16,7 @@ data class ResponseGetFollwerDto(
     @SerialName("total_pages")
     val totalPages: Int,
     @SerialName("data")
-    val data: List<ResponseData>,
+    val data: List<Follower>,
     @SerialName("support")
     val support: ResponseSupport
 )
@@ -27,7 +30,7 @@ data class ResponseSupport(
 )
 
 @Serializable
-data class ResponseData(
+data class Follower(
     @SerialName("id")
     val id: Int,
     @SerialName("email")
@@ -39,3 +42,7 @@ data class ResponseData(
     @SerialName("avatar")
     val avatar: String,
 )
+
+fun Follower.toProfile() {
+    return Profile()
+}

@@ -8,10 +8,6 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="org.sopt.dosopttemplate.presentation.auth.login.LogInViewModel" />
-
-        <variable
             name="authViewModel"
             type="org.sopt.dosopttemplate.presentation.auth.AuthViewModel" />
 

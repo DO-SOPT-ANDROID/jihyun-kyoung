@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.data.model.ResponseGetFollwerDto
+import org.sopt.dosopttemplate.api.FollowerService
+import org.sopt.dosopttemplate.data.model.ResponseGetFollowerDto
 import org.sopt.dosopttemplate.api.ServicePool
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.util.UtilClass.makeToast
@@ -37,25 +41,32 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun getFollowerList() {
-        ServicePool.followerService.getFollowerList()
-            .enqueue(object : Callback<ResponseGetFollwerDto> {
-                override fun onResponse(
-                    call: Call<ResponseGetFollwerDto>,
-                    response: Response<ResponseGetFollwerDto>
-                ) {
-                    if (response.isSuccessful) {
-                        setProfileListFromResponse(response)
-                    }
-                }
-
-                override fun onFailure(call: Call<ResponseGetFollwerDto>, t: Throwable) {
-                    Log.v("serverError", t.toString())
-                    makeToast(context as Activity, getString(R.string.serverError))
-                }
-            })
+        lifecycleScope.launch {
+            kotlin.runCatching{
+                ServicePool.followerService.getFollowerList()
+            }.onSuccess {
+                profileAdapter.setProfileList(it.body()?.data.to)
+            }
+        }
+//        ServicePool.followerService.getFollowerList()
+//            .enqueue(object : Callback<ResponseGetFollowerDto> {
+//                override fun onResponse(
+//                    call: Call<ResponseGetFollowerDto>,
+//                    response: Response<ResponseGetFollowerDto>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        setProfileListFromResponse(response)
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<ResponseGetFollowerDto>, t: Throwable) {
+//                    Log.v("serverError", t.toString())
+//                    makeToast(context as Activity, getString(R.string.serverError))
+//                }
+//            })
     }
 
-    private fun setProfileListFromResponse(response: Response<ResponseGetFollwerDto>) {
+    private fun setProfileListFromResponse(response: Response<ResponseGetFollowerDto>) {
         val responseBody = response.body()
         val data = responseBody?.data
         viewModel.initResponseDataList(data)

@@ -2,7 +2,7 @@ package org.sopt.dosopttemplate.presentation.home
 
 import androidx.lifecycle.ViewModel
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.data.model.ResponseData
+import org.sopt.dosopttemplate.data.model.Follower
 import org.sopt.dosopttemplate.domain.model.Profile
 
 class HomeViewModel : ViewModel() {
@@ -27,7 +27,7 @@ class HomeViewModel : ViewModel() {
     fun getMockProfileLIst() = mockProfileList
 
     //    fun getResponseDataList(): MutableList<Profile> = _responseDataList
-    fun initResponseDataList(responseDataList: List<ResponseData>?) {
+    fun initResponseDataList(responseDataList: List<Follower>?) {
         if (responseDataList.isNullOrEmpty()) return
         for (i in 0..responseDataList.lastIndex) {
             if ((i + 1) > mockProfileList.lastIndex)
@@ -40,7 +40,7 @@ class HomeViewModel : ViewModel() {
         mockProfileList.add(profile)
     }
 
-    private fun convertDataToProfile(data: ResponseData): Profile {
+    private fun convertDataToProfile(data: Follower): Profile {
         val fullName = data.firstName + " " + data.lastName
         return Profile(fullName, data.email, data.avatar, data.id)
     }

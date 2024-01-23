@@ -2,28 +2,27 @@ package org.sopt.dosopttemplate.presentation.auth.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.presentation.auth.AuthViewModel
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
-import org.sopt.dosopttemplate.presentation.home.HomeActivity
+import org.sopt.dosopttemplate.presentation.auth.AuthViewModel
 import org.sopt.dosopttemplate.presentation.auth.signup.SingUpActivity
+import org.sopt.dosopttemplate.presentation.home.HomeActivity
 import org.sopt.dosopttemplate.util.UtilClass.makeToast
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private val viewModel by viewModels<LogInViewModel>()
     private val authViewModel by viewModels<AuthViewModel>()
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
         binding.authViewModel = authViewModel
         clickSignUpBtn()
         observeLoginResult()

@@ -12,92 +12,42 @@ data class ReqresData(
     val idInt: Int
 ) : Parcelable
 
-
-@Parcelize
-data class subInfo(
-    var music: Music?,
-    var MBTI: String,
-    var intro: String,
-) : Parcelable {
-    fun getMusic(): String = music?.string ?: "no music"
-
-    constructor(music: Music?) : this(music, "", "")
-}
-
 @Parcelize
 data class Profile(
     @DrawableRes
-    val profileImage: Int?,
+    val profileImage: Int = R.drawable.img_monkey,
     val id: String?,
+    val intId: Int,
     var nickname: String,
     val type: Int,
-    val reqresData: ReqresData?,
-    val subInfo: subInfo
+    val music: Music = Music("default music", "no artist"),
+    val MBTI: MBTI = org.sopt.dosopttemplate.domain.model.MBTI.INTJ,
+    val intro: String = "",
+    val email: String?,
+    val avatar: String?,
 ) : Parcelable {
-    fun getMusic(): String = subInfo.getMusic()
-    fun setMusic(musicTitle: String, musicArtist: String) {
-        subInfo.music = Music(musicTitle, musicArtist)
-    }
-
-    fun getMbti(): String = subInfo.MBTI
-    fun setMbti(mbti: String) {
-        subInfo.MBTI = mbti
-    }
-
-    fun getIntro(): String = subInfo.intro
-    fun setIntro(intro: String) {
-        subInfo.intro = intro
-    }
-
-    constructor(
-        nickname: String,
-        type: Int,
-        mbti: String,
-        intro: String
-    ) : this(
-        R.drawable.img_monkey,
-        null,
-        nickname,
-        type,
-        null,
-        subInfo(null, mbti, intro)
-    )
-
-    constructor(
-        profileImage: Int,
-        id: String,
-        nickname: String,
-        musicTitle: String,
-        musicArtist: String,
-        type: Int,
-        mbti: String,
-        intro: String,
-    ) : this(
-        profileImage,
-        id,
-        nickname,
-        type,
-        null,
-        subInfo(Music(musicTitle, musicArtist), mbti, intro)
-    )
-
-    constructor(
-        nickname: String,
-        email: String,
-        avatar: String,
-        idInt: Int
-    ) : this(
-        null,
-        null,
-        nickname,
-        FRIEND,
-        ReqresData(email, avatar, idInt),
-        subInfo(null)
-    )
-
 
     companion object {
         const val ME = 1
         const val FRIEND = 0
     }
+}
+
+enum class MBTI(val type: String) {
+    ENFP("enfp"),
+    ENFJ("enfj"),
+    ENTJ("entj"),
+    ENTP("entp"),
+    ESFJ("esfj"),
+    ESFP("esfp"),
+    ESTJ("estj"),
+    ESTP("estp"),
+    INFJ("infj"),
+    INFP("infp"),
+    INTJ("intj"),
+    INTP("intp"),
+    ISFJ("isfj"),
+    ISFP("isfp"),
+    ISTJ("istj"),
+    ISTP("istp")
 }

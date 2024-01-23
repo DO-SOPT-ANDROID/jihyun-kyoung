@@ -4,8 +4,10 @@ plugins {
     id 'kotlin-parcelize'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.20'
 }
+
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'org.sopt.dosopttemplate'
     compileSdk 33
