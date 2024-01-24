@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.api.ServicePool.authService
+import org.sopt.dosopttemplate.data.model.RequestLoginDto
 import org.sopt.dosopttemplate.data.model.RequestSignUpDto
 import org.sopt.dosopttemplate.data.model.ResponseLoginDto
 import org.sopt.dosopttemplate.util.UtilClass.isIdConditionSatisfied
@@ -43,21 +44,21 @@ class AuthViewModel : ViewModel() {
     val nickName: String get() = _nickName.value ?: ""
 
     fun login() {
-//        viewModelScope.launch {
-//            kotlin.runCatching {
-//                authService.login(RequestLoginDto(id, password))
-//            }.onSuccess {
-//                if (it.isSuccessful && it.body() != null) {
-//                    _loginState.value = LoginState.Success(it.body())
-//                    _loginSuccess.value = true
-//                } else {
-//                    _loginSuccess.value = false
-//                }
-//            }.onFailure {
-//                _loginSuccess.value = false
-//                Log.d("login fail", it.message ?: "")
-//            }
-//        }
+        viewModelScope.launch {
+            kotlin.runCatching {
+                authService.login(RequestLoginDto(id, password))
+            }.onSuccess {
+                if (it.isSuccessful && it.body() != null) {
+                    _loginState.value = LoginState.Success(it.body())
+                    _loginSuccess.value = true
+                } else {
+                    _loginSuccess.value = false
+                }
+            }.onFailure {
+                _loginSuccess.value = false
+                Log.d("login fail", it.message ?: "")
+            }
+        }
     }
 
     fun signUp() {

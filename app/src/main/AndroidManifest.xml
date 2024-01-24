@@ -15,28 +15,24 @@
         android:theme="@style/Theme.DoSoptTemplate"
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
-        <service
-            android:name=".api.FollowerService"
-            android:enabled="true"
-            android:exported="true"></service>
 
         <activity
             android:name=".presentation.auth.login.LoginActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".presentation.auth.signup.SingUpActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".presentation.home.HomeActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.auth.signup.SingUpActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.home.HomeActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".presentation.editMyPage.EditMyPageActivity"
             android:exported="false"
